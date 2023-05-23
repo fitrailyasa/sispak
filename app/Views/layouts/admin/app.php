@@ -110,10 +110,26 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/diagnosis" class="nav-link">
-                                <i class="nav-icon fas fa-magnifying-glass"></i>
+                            <a href="/kerusakan" class="nav-link">
+                                <i class="nav-icon fas fa-laptop-medical"></i>
                                 <p>
-                                    Diagnosis
+                                    Jenis Kerusakan
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/gejala" class="nav-link">
+                                <i class="nav-icon fas fa-list-ol"></i>
+                                <p>
+                                    Gejala
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/logout" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out"></i>
+                                <p>
+                                    Logout
                                 </p>
                             </a>
                         </li>
