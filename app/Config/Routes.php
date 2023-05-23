@@ -67,8 +67,8 @@ $routes->get('login', 'LoginController::index');
 $routes->get('/', 'Home::index');
 
 // DIAGNOSIS
-$routes->get('diagnosis', 'DiagnosisController::index');
-$routes->post('diagnosis/hasil', 'DiagnosisController::hasil');
+$routes->get('diagnosis', 'DiagnosisController::index', ['as' => 'diagnosis']);
+$routes->post('diagnosis/hasil', 'DiagnosisController::hasil', ['as' => 'diagnosis/hasil']);
 
 
 /*
