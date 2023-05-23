@@ -37,7 +37,7 @@ Hasil Diagnosa
         </div>
         <hr>
         <div class="m-2">
-            <div class="d-flex">
+            <div class="d-flex text-justify">
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada Power Supply (K8). Gejala yang Anda sebutkan, seperti kabel power yang mengalami goresan dan tidak ada indikasi daya masuk, menunjukkan bahwa masalah terletak pada power supply komputer.</small></h4>
                 </div>
@@ -45,7 +45,7 @@ Hasil Diagnosa
         </div>
         <hr>
         <div class="m-2">
-            <div class="d-flex">
+            <div class="d-flex text-justify">
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Solusi:</b></h4>
                     <ol>
