@@ -47,7 +47,7 @@ class AdminUserController extends BaseController
         $data = [
             'nama' => $this->request->getPost('nama'),
             'email' => $this->request->getPost('email'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'password' => password_hash($this->request->getvar('password'), PASSWORD_DEFAULT),
             'created_at' => date('Y-m-d H:i:s')
         ];
 
@@ -110,7 +110,7 @@ class AdminUserController extends BaseController
         $data = [
             'nama' => $this->request->getPost('nama'),
             'email' => $this->request->getPost('email'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
