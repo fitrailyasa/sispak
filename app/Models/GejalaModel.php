@@ -8,5 +8,5 @@ class GejalaModel extends Model
 {
     protected $table = 'gejala';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['kode_gejala', 'nama_gejala', 'pertanyaan', 'bobot', 'created_at', 'updated_at'];
+    protected $allowedFields = ['kode_gejala', 'nama_gejala', 'bobot', 'created_at', 'updated_at'];
 }

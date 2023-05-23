@@ -23,7 +23,6 @@ class AdminGejalaController extends BaseController
         $validationRules = [
             'kode_gejala' => 'required|is_unique[gejala.kode_gejala]',
             'nama_gejala' => 'required',
-            'pertanyaan' => 'required',
             'bobot' => 'required|numeric'
         ];
 
@@ -34,9 +33,6 @@ class AdminGejalaController extends BaseController
             ],
             'nama_gejala' => [
                 'required' => 'Nama gejala harus diisi.',
-            ],
-            'pertanyaan' => [
-                'required' => 'Pertanyaan harus diisi.'
             ],
             'bobot' => [
                 'required' => 'Bobot harus diisi.',
@@ -51,7 +47,6 @@ class AdminGejalaController extends BaseController
         $data = [
             'kode_gejala' => $this->request->getPost('kode_gejala'),
             'nama_gejala' => $this->request->getPost('nama_gejala'),
-            'pertanyaan' => $this->request->getPost('pertanyaan'),
             'bobot' => $this->request->getPost('bobot'),
             'created_at' => date('Y-m-d H:i:s')
         ];
@@ -91,7 +86,6 @@ class AdminGejalaController extends BaseController
         $validationRules = [
             'kode_gejala' => "required|is_unique[gejala.kode_gejala,id_gejala,$id]",
             'nama_gejala' => 'required',
-            'pertanyaan' => 'required',
             'bobot' => 'required|numeric'
         ];
 
@@ -102,9 +96,6 @@ class AdminGejalaController extends BaseController
             ],
             'nama_gejala' => [
                 'required' => 'Nama gejala harus diisi.'
-            ],
-            'pertanyaan' => [
-                'required' => 'Pertanyaan harus diisi.'
             ],
             'bobot' => [
                 'required' => 'Bobot harus diisi.',
@@ -119,7 +110,6 @@ class AdminGejalaController extends BaseController
         $data = [
             'kode_gejala' => $this->request->getPost('kode_gejala'),
             'nama_gejala' => $this->request->getPost('nama_gejala'),
-            'pertanyaan' => $this->request->getPost('pertanyaan'),
             'bobot' => $this->request->getPost('bobot'),
             'updated_at' => date('Y-m-d H:i:s')
         ];

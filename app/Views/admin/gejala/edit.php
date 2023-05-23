@@ -28,15 +28,6 @@ Edit Gejala
                 <?php endif ?>
             </div>
             <div class="form-group">
-                <label for="pertanyaan">Pertanyaan</label>
-                <textarea class="form-control <?= session('errors.pertanyaan') ? 'is-invalid' : ''; ?>" id="pertanyaan" rows="4" name="pertanyaan" required><?= old('pertanyaan') ?: $gejala['pertanyaan']; ?></textarea>
-                <?php if (session('errors.pertanyaan')) : ?>
-                    <span class="invalid-feedback" role="alert">
-                        <strong><?= session('errors.pertanyaan') ?></strong>
-                    </span>
-                <?php endif ?>
-            </div>
-            <div class="form-group">
                 <label for="bobot">Bobot</label>
                 <input type="number" class="form-control <?= session('errors.bobot') ? 'is-invalid' : ''; ?>" id="bobot" value="<?= old('bobot') ?: $gejala['bobot']; ?>" name="bobot" required>
                 <?php if (session('errors.bobot')) : ?>

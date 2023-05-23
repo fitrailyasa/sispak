@@ -19,7 +19,6 @@ Data Gejala
                     <th>No</th>
                     <th>Kode gejala</th>
                     <th>Nama gejala</th>
-                    <th>Pertanyaan</th>
                     <th>Bobot</th>
                     <th>Aksi</th>
                 </tr>
@@ -31,7 +30,6 @@ Data Gejala
                         <td><?= $i++ ?></td>
                         <td><?= $gejala['kode_gejala'] ?></td>
                         <td><?= $gejala['nama_gejala'] ?></td>
-                        <td><?= $gejala['pertanyaan'] ?></td>
                         <td><?= $gejala['bobot'] ?></td>
                         <td class="manage-row">
                             <a href="<?= route_to('gejala/show', $gejala['id']) ?>" class="show-button">
@@ -74,7 +72,6 @@ Data Gejala
                     <th>No</th>
                     <th>Kode gejala</th>
                     <th>Nama gejala</th>
-                    <th>Pertanyaan</th>
                     <th>Bobot</th>
                     <th>Aksi</th>
                 </tr>

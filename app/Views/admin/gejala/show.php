@@ -20,10 +20,6 @@ Detail Gejala
             <input type="text" class="form-control" id="nama_gejala" value="<?= $gejala['nama_gejala']; ?>" readonly>
         </div>
         <div class="form-group">
-            <label for="pertanyaan">Pertanyaan</label>
-            <textarea class="form-control" id="pertanyaan" rows="4" readonly><?= $gejala['pertanyaan']; ?></textarea>
-        </div>
-        <div class="form-group">
             <label for="bobot">Bobot</label>
             <input type="text" class="form-control" id="bobot" value="<?= $gejala['bobot']; ?>" readonly>
         </div>

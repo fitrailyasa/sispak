@@ -23,9 +23,6 @@ class CreateGejalaTable extends Migration
                     'type' => 'VARCHAR',
                     'constraint' => 255
                 ],
-                'pertanyaan' => [
-                    'type' => 'TEXT'
-                ],
                 'bobot' => [
                     'type' => 'INT',
                     'constraint' => 11
