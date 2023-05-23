@@ -7,6 +7,9 @@ Data Kerusakan
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Tabel Data Kerusakan</h3>
+        <div class="card-tools">
+            <a href="<?= route_to('kerusakan/create') ?>" class="btn btn-sm btn-secondary">Tambah Jenis Kerusakan</a>
+        </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body">

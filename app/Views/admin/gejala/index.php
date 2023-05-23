@@ -7,6 +7,9 @@ Data Gejala
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Tabel Data Gejala</h3>
+        <div class="card-tools">
+            <a href="<?= route_to('gejala/create') ?>" class="btn btn-sm btn-secondary">Tambah Gejala</a>
+        </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
