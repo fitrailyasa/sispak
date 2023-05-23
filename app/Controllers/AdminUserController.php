@@ -4,12 +4,14 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 
+
 class AdminUserController extends BaseController
 {
     public function index()
     {
-        $users = UserModel::findAll();
-        return view('admin/user/index');
+        $userModel = new UserModel();
+        $users = $userModel->findAll();
+        return view('admin/user/index', ['users' => $users]);
     }
 
     public function create()
@@ -19,38 +21,37 @@ class AdminUserController extends BaseController
 
     public function store()
     {
-        $validation = [
+        $validationRules = [
+            'nama' => 'required',
+            'email' => 'required|is_unique[user.email]',
+            'password' => 'required|min_length[8]',
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+
+        $validationMessages = [
             'nama' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama harus diisi.'
-                ]
+                'required' => 'Nama harus diisi.'
             ],
             'email' => [
-                'rules' => 'required|valid_email|is_unique[user.email]',
-                'errors' => [
-                    'required' => 'Email harus diisi.',
-                    'valid_email' => 'Email harus valid.',
-                    'is_unique' => 'Email sudah terdaftar.'
-                ]
+                'required' => 'Email harus diisi.',
+                'is_unique' => 'Email sudah terdaftar.'
             ],
             'password' => [
-                'rules' => 'required|min_length[8]',
-                'errors' => [
-                    'required' => 'Password harus diisi.',
-                    'min_length' => 'Password minimal 8 karakter.'
-                ]
+                'required' => 'Password harus diisi.',
+                'min_length' => 'Password minimal 8 karakter.'
             ]
         ];
+
+        $this->validate($this->request, $validationRules, $validationMessages);
 
         $data = [
             'nama' => $this->request->getPost('nama'),
             'email' => $this->request->getPost('email'),
-            'password' => $this->request->getPost('password'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        UserModel::insert($data, false, $validation);
+        UserModel::insert($data);
 
         return redirect()->to('/admin/user');
     }
@@ -58,49 +59,65 @@ class AdminUserController extends BaseController
     public function show($id)
     {
         $user = UserModel::find($id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'user not found.');
+        }
+
         return view('admin/user/show', compact('user'));
     }
 
     public function edit($id)
     {
         $user = UserModel::find($id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'user not found.');
+        }
+
         return view('admin/user/edit', compact('user'));
     }
 
     public function update($id)
     {
-        $validation = [
+        $validationRules = [
+            'nama' => 'required',
+            'email' => 'required|is_unique[user.email]',
+            'password' => 'required|min_length[8]',
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        $validationMessages = [
             'nama' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama harus diisi.'
-                ]
+                'required' => 'Nama harus diisi.'
             ],
             'email' => [
-                'rules' => 'required|valid_email|is_unique[user.email,id_user,{id}]',
-                'errors' => [
-                    'required' => 'Email harus diisi.',
-                    'valid_email' => 'Email harus valid.',
-                    'is_unique' => 'Email sudah terdaftar.'
-                ]
+                'required' => 'Email harus diisi.',
+                'is_unique' => 'Email sudah terdaftar.'
             ],
             'password' => [
-                'rules' => 'required|min_length[8]',
-                'errors' => [
-                    'required' => 'Password harus diisi.',
-                    'min_length' => 'Password minimal 8 karakter.'
-                ]
+                'required' => 'Password harus diisi.',
+                'min_length' => 'Password minimal 8 karakter.'
             ]
         ];
+
+        $this->validate($this->request, $validationRules, $validationMessages);
 
         $data = [
             'nama' => $this->request->getPost('nama'),
             'email' => $this->request->getPost('email'),
-            'password' => $this->request->getPost('password'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        UserModel::update($id, $data, false, $validation);
+        $user = UserModel::find($id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'user not found.');
+        }
+
+        $user->fill($data);
+        $user->save();
 
         return redirect()->to('/admin/user');
     }

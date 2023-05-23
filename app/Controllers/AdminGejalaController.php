@@ -8,8 +8,9 @@ class AdminGejalaController extends BaseController
 {
     public function index()
     {
-        $gejalas = GejalaModel::findAll();
-        return view('admin/gejala/index', compact('gejalas'));
+        $gejalaModel = new GejalaModel();
+        $gejalas = $gejalaModel->findAll();
+        return view('admin/gejala/index', ['gejalas' => $gejalas]);
     }
 
     public function create()
@@ -19,34 +20,32 @@ class AdminGejalaController extends BaseController
 
     public function store()
     {
-        $validation = [
+        $validationRules = [
+            'kode_gejala' => 'required|is_unique[gejala.kode_gejala]',
+            'nama_gejala' => 'required',
+            'pertanyaan' => 'required',
+            'bobot' => 'required|numeric',
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+
+        $validationMessages = [
             'kode_gejala' => [
-                'rules' => 'required|is_unique[gejala.kode_gejala]',
-                'errors' => [
-                    'required' => 'Kode gejala harus diisi.',
-                    'is_unique' => 'Kode gejala sudah terdaftar.'
-                ]
+                'required' => 'Kode gejala harus diisi.',
+                'is_unique' => 'Kode gejala sudah terdaftar.'
             ],
             'nama_gejala' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama gejala harus diisi.'
-                ]
+                'required' => 'Nama gejala harus diisi.',
             ],
             'pertanyaan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Pertanyaan harus diisi.'
-                ]
+                'required' => 'Pertanyaan harus diisi.'
             ],
             'bobot' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Bobot harus diisi.'
-                ]
+                'required' => 'Bobot harus diisi.',
+                'numeric' => 'Bobot harus berupa angka.'
             ]
-
         ];
+
+        $this->validate($this->request, $validationRules, $validationMessages);
 
         $data = [
             'kode_gejala' => $this->request->getPost('kode_gejala'),
@@ -56,7 +55,7 @@ class AdminGejalaController extends BaseController
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        GejalaModel::insert($data, false, $validation);
+        GejalaModel::insert($data);
 
         return redirect()->to('/admin/gejala');
     }
@@ -64,44 +63,53 @@ class AdminGejalaController extends BaseController
     public function show($id)
     {
         $gejala = GejalaModel::find($id);
+
+        if (!$gejala) {
+            return redirect()->back()->with('error', 'Gejala not found.');
+        }
+
         return view('admin/gejala/show', compact('gejala'));
     }
 
     public function edit($id)
     {
         $gejala = GejalaModel::find($id);
+
+        if (!$gejala) {
+            return redirect()->back()->with('error', 'Gejala not found.');
+        }
+
         return view('admin/gejala/edit', compact('gejala'));
     }
 
     public function update($id)
     {
-        $validation = [
+        $validationRules = [
+            'kode_gejala' => "required|is_unique[gejala.kode_gejala,id_gejala,$id]",
+            'nama_gejala' => 'required',
+            'pertanyaan' => 'required',
+            'bobot' => 'required|numeric',
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        $validationMessages = [
             'kode_gejala' => [
-                'rules' => 'required|is_unique[gejala.kode_gejala,id_gejala,{id}]',
-                'errors' => [
-                    'required' => 'Kode gejala harus diisi.',
-                    'is_unique' => 'Kode gejala sudah terdaftar.'
-                ]
+                'required' => 'Kode gejala harus diisi.',
+                'is_unique' => 'Kode gejala sudah terdaftar.'
             ],
             'nama_gejala' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama gejala harus diisi.'
-                ]
+                'required' => 'Nama gejala harus diisi.'
             ],
             'pertanyaan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Pertanyaan harus diisi.'
-                ]
+                'required' => 'Pertanyaan harus diisi.'
             ],
             'bobot' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Bobot harus diisi.'
-                ]
+                'required' => 'Bobot harus diisi.',
+                'numeric' => 'Bobot harus berupa angka.'
             ]
         ];
+
+        $this->validate($this->request, $validationRules, $validationMessages);
 
         $data = [
             'kode_gejala' => $this->request->getPost('kode_gejala'),
@@ -111,7 +119,14 @@ class AdminGejalaController extends BaseController
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        GejalaModel::update($id, $data, false, $validation);
+        $gejala = GejalaModel::find($id);
+
+        if (!$gejala) {
+            return redirect()->back()->with('error', 'Gejala not found.');
+        }
+
+        $gejala->fill($data);
+        $gejala->save();
 
         return redirect()->to('/admin/gejala');
     }
