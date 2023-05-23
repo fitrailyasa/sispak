@@ -17,15 +17,6 @@ Diagnosa
         <br>
         <input type="submit" value="Submit">
     </form>
-    <?php $i = 1;
-    foreach ($gejalas as $gejala) : ?>
-        <p>
-            <?= $gejala['nama_gejala'] ?>
-        </p>
-        <p>
-            <?= $gejala['pertanyaan'] ?>
-        </p>
-    <?php endforeach; ?>
 </div>
 <div class="m-4">
 
