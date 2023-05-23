@@ -20,7 +20,7 @@ Data Kerusakan
                     <th>Kode kerusakan</th>
                     <th>Nama kerusakan</th>
                     <th>Solusi</th>
-                    <th>More</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,7 +73,7 @@ Data Kerusakan
                     <th>Kode kerusakan</th>
                     <th>Nama kerusakan</th>
                     <th>Solusi</th>
-                    <th>More</th>
+                    <th>Aksi</th>
                 </tr>
             </tfoot>
         </table>

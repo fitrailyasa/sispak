@@ -21,7 +21,7 @@ Data Gejala
                     <th>Nama gejala</th>
                     <th>Pertanyaan</th>
                     <th>Bobot</th>
-                    <th>More</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,7 +76,7 @@ Data Gejala
                     <th>Nama gejala</th>
                     <th>Pertanyaan</th>
                     <th>Bobot</th>
-                    <th>More</th>
+                    <th>Aksi</th>
                 </tr>
             </tfoot>
         </table>

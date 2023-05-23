@@ -19,7 +19,7 @@ Data User
                     <th>No</th>
                     <th>Nama user</th>
                     <th>Email</th>
-                    <th>More</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,7 +70,7 @@ Data User
                     <th>No</th>
                     <th>Nama user</th>
                     <th>Email</th>
-                    <th>More</th>
+                    <th>Aksi</th>
                 </tr>
             </tfoot>
         </table>
