@@ -38,7 +38,7 @@ Edit Gejala
             </div>
             <div class="form-group">
                 <label for="bobot">Bobot</label>
-                <input type="text" class="form-control <?= session('errors.bobot') ? 'is-invalid' : ''; ?>" id="bobot" value="<?= old('bobot') ?: $gejala['bobot']; ?>" name="bobot" required>
+                <input type="number" class="form-control <?= session('errors.bobot') ? 'is-invalid' : ''; ?>" id="bobot" value="<?= old('bobot') ?: $gejala['bobot']; ?>" name="bobot" required>
                 <?php if (session('errors.bobot')) : ?>
                     <span class="invalid-feedback" role="alert">
                         <strong><?= session('errors.bobot') ?></strong>

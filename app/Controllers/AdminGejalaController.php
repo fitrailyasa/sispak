@@ -44,7 +44,9 @@ class AdminGejalaController extends BaseController
             ]
         ];
 
-        $this->validate($this->request, $validationRules, $validationMessages);
+        if (!$this->validate($validationRules, $validationMessages)) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
+        }
 
         $data = [
             'kode_gejala' => $this->request->getPost('kode_gejala'),
@@ -110,7 +112,9 @@ class AdminGejalaController extends BaseController
             ]
         ];
 
-        $this->validate($this->request, $validationRules, $validationMessages);
+        if (!$this->validate($validationRules, $validationMessages)) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
+        }
 
         $data = [
             'kode_gejala' => $this->request->getPost('kode_gejala'),
