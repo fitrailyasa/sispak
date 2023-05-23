@@ -24,8 +24,7 @@ class AdminGejalaController extends BaseController
             'kode_gejala' => 'required|is_unique[gejala.kode_gejala]',
             'nama_gejala' => 'required',
             'pertanyaan' => 'required',
-            'bobot' => 'required|numeric',
-            'created_at' => date('Y-m-d H:i:s')
+            'bobot' => 'required|numeric'
         ];
 
         $validationMessages = [
@@ -55,14 +54,16 @@ class AdminGejalaController extends BaseController
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        GejalaModel::insert($data);
+        $gejalaModel = new GejalaModel();
+        $gejalaModel->insert($data);
 
-        return redirect()->to('/admin/gejala');
+        return redirect()->to('/gejala');
     }
 
     public function show($id)
     {
-        $gejala = GejalaModel::find($id);
+        $gejalaModel = new GejalaModel();
+        $gejala = $gejalaModel->find($id);
 
         if (!$gejala) {
             return redirect()->back()->with('error', 'Gejala not found.');
@@ -73,7 +74,8 @@ class AdminGejalaController extends BaseController
 
     public function edit($id)
     {
-        $gejala = GejalaModel::find($id);
+        $gejalaModel = new GejalaModel();
+        $gejala = $gejalaModel->find($id);
 
         if (!$gejala) {
             return redirect()->back()->with('error', 'Gejala not found.');
@@ -88,8 +90,7 @@ class AdminGejalaController extends BaseController
             'kode_gejala' => "required|is_unique[gejala.kode_gejala,id_gejala,$id]",
             'nama_gejala' => 'required',
             'pertanyaan' => 'required',
-            'bobot' => 'required|numeric',
-            'updated_at' => date('Y-m-d H:i:s')
+            'bobot' => 'required|numeric'
         ];
 
         $validationMessages = [
@@ -119,22 +120,23 @@ class AdminGejalaController extends BaseController
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        $gejala = GejalaModel::find($id);
+        $gejalaModel = new GejalaModel();
+        $gejala = $gejalaModel->find($id);
 
         if (!$gejala) {
             return redirect()->back()->with('error', 'Gejala not found.');
         }
 
-        $gejala->fill($data);
-        $gejala->save();
+        $gejalaModel->update($id, $data);
 
-        return redirect()->to('/admin/gejala');
+        return redirect()->to('/gejala');
     }
 
     public function destroy($id)
     {
-        GejalaModel::delete($id);
+        $gejalaModel = new GejalaModel();
+        $gejalaModel->delete($id);
 
-        return redirect()->to('/admin/gejala');
+        return redirect()->to('/gejala');
     }
 }

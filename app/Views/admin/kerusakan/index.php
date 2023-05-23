@@ -14,8 +14,8 @@ Data Kerusakan
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kode Kerusakan</th>
-                    <th>Nama Kerusakan</th>
+                    <th>Kode kerusakan</th>
+                    <th>Nama kerusakan</th>
                     <th>Solusi</th>
                     <th>More</th>
                 </tr>
@@ -29,14 +29,14 @@ Data Kerusakan
                         <td><?= $kerusakan['nama_kerusakan'] ?></td>
                         <td><?= $kerusakan['solusi'] ?></td>
                         <td class="manage-row">
-                            <a href="<?= route_to('kerusakan.show', $kerusakan['id']) ?>" class="show-button">
+                            <a href="<?= route_to('kerusakan/show', $kerusakan['id']) ?>" class="show-button">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="<?= route_to('kerusakan.edit', $kerusakan['id']) ?>" class="edit-button">
+                            <a href="<?= route_to('kerusakan/edit', $kerusakan['id']) ?>" class="edit-button">
                                 <i class="fa-solid fa-marker"></i>
                             </a>
                             <!-- Button trigger modal -->
-                            <a role="button" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $kerusakan['id'] ?>">
+                            <a href="<?= route_to('kerusakan/delete', $kerusakan['id']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $kerusakan['id'] ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             <!-- Modal -->
@@ -47,9 +47,9 @@ Data Kerusakan
                                             <h5 class="modal-title"><strong>Hapus Data</strong></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
-                                        <div class="modal-body">Apakah anda yakin ingin menghapus data?</div>
+                                        <div class="modal-body">Apakah Anda yakin ingin menghapus data?</div>
                                         <div class="modal-footer">
-                                            <form action="<?= route_to('kerusakan.destroy', $kerusakan['id']) ?>" method="POST">
+                                            <form action="<?= route_to('kerusakan/delete', $kerusakan['id']) ?>" method="POST">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="submit" class="btn btn-danger light" name="" id="" value="Hapus">
@@ -59,6 +59,7 @@ Data Kerusakan
                                     </div>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -66,8 +67,8 @@ Data Kerusakan
             <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Kode Kerusakan</th>
-                    <th>Nama Kerusakan</th>
+                    <th>Kode kerusakan</th>
+                    <th>Nama kerusakan</th>
                     <th>Solusi</th>
                     <th>More</th>
                 </tr>

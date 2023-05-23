@@ -27,14 +27,14 @@ Data User
                         <td><?= $user['nama'] ?></td>
                         <td><?= $user['email'] ?></td>
                         <td class="manage-row">
-                            <a href="<?= route_to('user.show', $user['id']) ?>" class="show-button">
+                            <a href="<?= route_to('user/show', $user['id']) ?>" class="show-button">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="<?= route_to('user.edit', $user['id']) ?>" class="edit-button">
+                            <a href="<?= route_to('user/edit', $user['id']) ?>" class="edit-button">
                                 <i class="fa-solid fa-marker"></i>
                             </a>
                             <!-- Button trigger modal -->
-                            <a role="button" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $user['id'] ?>">
+                            <a href="<?= route_to('user/delete', $user['id']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $user['id'] ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             <!-- Modal -->
@@ -45,9 +45,9 @@ Data User
                                             <h5 class="modal-title"><strong>Hapus Data</strong></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
-                                        <div class="modal-body">Apakah anda yakin ingin menghapus data?</div>
+                                        <div class="modal-body">Apakah Anda yakin ingin menghapus data?</div>
                                         <div class="modal-footer">
-                                            <form action="<?= route_to('user.destroy', $user['id']) ?>" method="POST">
+                                            <form action="<?= route_to('user/delete', $user['id']) ?>" method="POST">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="submit" class="btn btn-danger light" name="" id="" value="Hapus">
@@ -57,6 +57,7 @@ Data User
                                     </div>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>

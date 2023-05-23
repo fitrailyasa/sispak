@@ -14,8 +14,8 @@ Data Gejala
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kode Gejala</th>
-                    <th>Nama Gejala</th>
+                    <th>Kode gejala</th>
+                    <th>Nama gejala</th>
                     <th>Pertanyaan</th>
                     <th>Bobot</th>
                     <th>More</th>
@@ -31,14 +31,14 @@ Data Gejala
                         <td><?= $gejala['pertanyaan'] ?></td>
                         <td><?= $gejala['bobot'] ?></td>
                         <td class="manage-row">
-                            <a href="<?= route_to('gejala.show', $gejala['id']) ?>" class="show-button">
+                            <a href="<?= route_to('gejala/show', $gejala['id']) ?>" class="show-button">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="<?= route_to('gejala.edit', $gejala['id']) ?>" class="edit-button">
+                            <a href="<?= route_to('gejala/edit', $gejala['id']) ?>" class="edit-button">
                                 <i class="fa-solid fa-marker"></i>
                             </a>
                             <!-- Button trigger modal -->
-                            <a role="button" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $gejala['id'] ?>">
+                            <a href="<?= route_to('gejala/delete', $gejala['id']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $gejala['id'] ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             <!-- Modal -->
@@ -49,9 +49,9 @@ Data Gejala
                                             <h5 class="modal-title"><strong>Hapus Data</strong></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
-                                        <div class="modal-body">Apakah anda yakin ingin menghapus data?</div>
+                                        <div class="modal-body">Apakah Anda yakin ingin menghapus data?</div>
                                         <div class="modal-footer">
-                                            <form action="<?= route_to('gejala.destroy', $gejala['id']) ?>" method="POST">
+                                            <form action="<?= route_to('gejala/delete', $gejala['id']) ?>" method="POST">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="submit" class="btn btn-danger light" name="" id="" value="Hapus">
@@ -61,6 +61,7 @@ Data Gejala
                                     </div>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -68,8 +69,8 @@ Data Gejala
             <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Kode Gejala</th>
-                    <th>Nama Gejala</th>
+                    <th>Kode gejala</th>
+                    <th>Nama gejala</th>
                     <th>Pertanyaan</th>
                     <th>Bobot</th>
                     <th>More</th>

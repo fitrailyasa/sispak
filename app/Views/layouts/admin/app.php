@@ -126,6 +126,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/user" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    User
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/logout" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out"></i>
                                 <p>

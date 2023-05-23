@@ -39,23 +39,27 @@ class AdminKerusakanController extends BaseController
             ]
         ];
 
-        $this->validate($this->request, $validationRules, $validationMessages);
+        if (!$this->validate($validationRules, $validationMessages)) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
+        }
 
         $data = [
-            'kode_kerusakan' => $this->request->getPost('kode_kerusakan'),
-            'nama_kerusakan' => $this->request->getPost('nama_kerusakan'),
-            'solusi' => $this->request->getPost('solusi'),
+            'kode_kerusakan' => $this->request->getVar('kode_kerusakan'),
+            'nama_kerusakan' => $this->request->getVar('nama_kerusakan'),
+            'solusi' => $this->request->getVar('solusi'),
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        KerusakanModel::insert($data);
+        $kerusakanModel = new KerusakanModel();
+        $kerusakanModel->insert($data);
 
-        return redirect()->to('/admin/kerusakan');
+        return redirect()->to('/kerusakan');
     }
 
     public function show($id)
     {
-        $kerusakan = KerusakanModel::find($id);
+        $kerusakanModel = new KerusakanModel();
+        $kerusakan = $kerusakanModel->find($id);
 
         if (!$kerusakan) {
             return redirect()->back()->with('error', 'Kerusakan not found.');
@@ -66,7 +70,8 @@ class AdminKerusakanController extends BaseController
 
     public function edit($id)
     {
-        $kerusakan = KerusakanModel::find($id);
+        $kerusakanModel = new KerusakanModel();
+        $kerusakan = $kerusakanModel->find($id);
 
         if (!$kerusakan) {
             return redirect()->back()->with('error', 'Kerusakan not found.');
@@ -96,16 +101,19 @@ class AdminKerusakanController extends BaseController
             ]
         ];
 
-        $this->validate($this->request, $validationRules, $validationMessages);
+        if (!$this->validate($validationRules, $validationMessages)) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
+        }
 
         $data = [
-            'kode_kerusakan' => $this->request->getPost('kode_kerusakan'),
-            'nama_kerusakan' => $this->request->getPost('nama_kerusakan'),
-            'solusi' => $this->request->getPost('solusi'),
+            'kode_kerusakan' => $this->request->getVar('kode_kerusakan'),
+            'nama_kerusakan' => $this->request->getVar('nama_kerusakan'),
+            'solusi' => $this->request->getVar('solusi'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        $kerusakan = KerusakanModel::find($id);
+        $kerusakanModel = new KerusakanModel();
+        $kerusakan = $kerusakanModel->find($id);
 
         if (!$kerusakan) {
             return redirect()->back()->with('error', 'Kerusakan not found.');
@@ -114,13 +122,14 @@ class AdminKerusakanController extends BaseController
         $kerusakan->fill($data);
         $kerusakan->save();
 
-        return redirect()->to('/admin/kerusakan');
+        return redirect()->to('/kerusakan');
     }
 
     public function destroy($id)
     {
-        KerusakanModel::delete($id);
+        $kerusakanModel = new KerusakanModel();
+        $kerusakanModel->delete($id);
 
-        return redirect()->to('/admin/kerusakan');
+        return redirect()->to('/kerusakan');
     }
 }

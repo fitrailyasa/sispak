@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 
-
 class AdminUserController extends BaseController
 {
     public function index()
@@ -25,7 +24,6 @@ class AdminUserController extends BaseController
             'nama' => 'required',
             'email' => 'required|is_unique[user.email]',
             'password' => 'required|min_length[8]',
-            'created_at' => date('Y-m-d H:i:s')
         ];
 
         $validationMessages = [
@@ -42,7 +40,9 @@ class AdminUserController extends BaseController
             ]
         ];
 
-        $this->validate($this->request, $validationRules, $validationMessages);
+        if (!$this->validate($validationRules, $validationMessages)) {
+            return redirect()->back()->withInput();
+        }
 
         $data = [
             'nama' => $this->request->getPost('nama'),
@@ -51,31 +51,34 @@ class AdminUserController extends BaseController
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        UserModel::insert($data);
+        $userModel = new UserModel();
+        $userModel->insert($data);
 
-        return redirect()->to('/admin/user');
+        return redirect()->to('/user');
     }
 
     public function show($id)
     {
-        $user = UserModel::find($id);
+        $userModel = new UserModel();
+        $user = $userModel->find($id);
 
         if (!$user) {
-            return redirect()->back()->with('error', 'user not found.');
+            return redirect()->back()->with('error', 'User not found.');
         }
 
-        return view('admin/user/show', compact('user'));
+        return view('admin/user/show', ['user' => $user]);
     }
 
     public function edit($id)
     {
-        $user = UserModel::find($id);
+        $userModel = new UserModel();
+        $user = $userModel->find($id);
 
         if (!$user) {
-            return redirect()->back()->with('error', 'user not found.');
+            return redirect()->back()->with('error', 'User not found.');
         }
 
-        return view('admin/user/edit', compact('user'));
+        return view('admin/user/edit', ['user' => $user]);
     }
 
     public function update($id)
@@ -84,7 +87,6 @@ class AdminUserController extends BaseController
             'nama' => 'required',
             'email' => 'required|is_unique[user.email]',
             'password' => 'required|min_length[8]',
-            'updated_at' => date('Y-m-d H:i:s')
         ];
 
         $validationMessages = [
@@ -101,7 +103,9 @@ class AdminUserController extends BaseController
             ]
         ];
 
-        $this->validate($this->request, $validationRules, $validationMessages);
+        if (!$this->validate($validationRules, $validationMessages)) {
+            return redirect()->back()->withInput();
+        }
 
         $data = [
             'nama' => $this->request->getPost('nama'),
@@ -110,22 +114,24 @@ class AdminUserController extends BaseController
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        $user = UserModel::find($id);
+        $userModel = new UserModel();
+        $user = $userModel->find($id);
 
         if (!$user) {
-            return redirect()->back()->with('error', 'user not found.');
+            return redirect()->back()->with('error', 'User not found.');
         }
 
         $user->fill($data);
         $user->save();
 
-        return redirect()->to('/admin/user');
+        return redirect()->to('/user');
     }
 
     public function destroy($id)
     {
-        UserModel::delete($id);
+        $userModel = new UserModel();
+        $userModel->delete($id);
 
-        return redirect()->to('/admin/user');
+        return redirect()->to('/user');
     }
 }

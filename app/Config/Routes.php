@@ -37,19 +37,30 @@ $routes->get('dashboard', 'AdminDashboardController::index');
 $routes->get('user', 'AdminUserController::index');
 $routes->get('user/create', 'AdminUserController::create');
 $routes->post('user', 'AdminUserController::store');
-$routes->get('user/(:num)', 'AdminUserController::show/$1');
+$routes->get('user/show/(:num)', 'AdminUserController::show/$1', ['as' => 'user/show']);
+$routes->get('user/edit/(:num)', 'AdminUserController::edit/$1', ['as' => 'user/edit']);
+$routes->post('user/update/(:num)', 'AdminUserController::update/$1', ['as' => 'user/update']);
+$routes->delete('user/delete/(:num)', 'AdminUserController::destroy/$1', ['as' => 'user/delete']);
 
 // KERUSAKAN
 $routes->get('kerusakan', 'AdminKerusakanController::index');
 $routes->get('kerusakan/create', 'AdminKerusakanController::create');
 $routes->post('kerusakan', 'AdminKerusakanController::store');
-$routes->get('kerusakan/(:num)', 'AdminKerusakanController::show/$1');
+$routes->get('kerusakan/show/(:num)', 'AdminKerusakanController::show/$1', ['as' => 'kerusakan/show']);
+$routes->get('kerusakan/edit/(:num)', 'AdminKerusakanController::edit/$1', ['as' => 'kerusakan/edit']);
+$routes->post('kerusakan/update/(:num)', 'AdminKerusakanController::update/$1', ['as' => 'kerusakan/update']);
+$routes->delete('kerusakan/delete/(:num)', 'AdminKerusakanController::destroy/$1', ['as' => 'kerusakan/delete']);
+
 
 // GEJALA
 $routes->get('gejala', 'AdminGejalaController::index');
 $routes->get('gejala/create', 'AdminGejalaController::create');
 $routes->post('gejala', 'AdminGejalaController::store');
 $routes->get('gejala/(:num)', 'AdminGejalaController::show/$1');
+$routes->get('gejala/show/(:num)', 'AdminGejalaController::show/$1', ['as' => 'gejala/show']);
+$routes->get('gejala/edit/(:num)', 'AdminGejalaController::edit/$1', ['as' => 'gejala/edit']);
+$routes->post('gejala/update/(:num)', 'AdminGejalaController::update/$1', ['as' => 'gejala/update']);
+$routes->delete('gejala/delete/(:num)', 'AdminGejalaController::destroy/$1', ['as' => 'gejala/delete']);
 
 // LOGIN
 $routes->get('login', 'LoginController::index');
