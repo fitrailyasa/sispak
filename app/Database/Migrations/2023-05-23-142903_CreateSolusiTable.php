@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateKerusakanTable extends Migration
+class CreateSolusiTable extends Migration
 {
     public function up()
     {
@@ -15,11 +15,11 @@ class CreateKerusakanTable extends Migration
                     'constraint' => 11,
                     'auto_increment' => true
                 ],
-                'kode_kerusakan' => [
-                    'type' => 'VARCHAR',
-                    'constraint' => 255
+                'kerusakan_id' => [
+                    'type' => 'INT',
+                    'constraint' => 11
                 ],
-                'nama_kerusakan' => [
+                'nama_solusi' => [
                     'type' => 'VARCHAR',
                     'constraint' => 255
                 ],
@@ -33,11 +33,11 @@ class CreateKerusakanTable extends Migration
         );
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('kerusakan');
+        $this->forge->createTable('solusi');
     }
 
     public function down()
     {
-        $this->forge->dropTable('kerusakan');
+        $this->forge->dropTable('solusi');
     }
 }

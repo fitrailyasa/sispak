@@ -32,15 +32,6 @@ Tambah Kerusakan
                     </span>
                 <?php endif ?>
             </div>
-            <div class="form-group">
-                <label for="solusi">Solusi</label>
-                <textarea class="form-control" id="solusi" placeholder="Masukkan solusi kerusakan" name="solusi" required><?= old('solusi'); ?></textarea>
-                <?php if (session('errors.solusi')) : ?>
-                    <span class="invalid-feedback" role="alert">
-                        <strong><?= session('errors.solusi') ?></strong>
-                    </span>
-                <?php endif ?>
-            </div>
             <div class="">
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>

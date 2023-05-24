@@ -27,15 +27,6 @@ Edit Kerusakan
                     </span>
                 <?php endif ?>
             </div>
-            <div class="form-group">
-                <label for="solusi">Solusi</label>
-                <textarea class="form-control <?= session('errors.solusi') ? 'is-invalid' : ''; ?>" id="solusi" rows="4" name="solusi" required><?= old('solusi') ?: $kerusakan['solusi']; ?></textarea>
-                <?php if (session('errors.solusi')) : ?>
-                    <span class="invalid-feedback" role="alert">
-                        <strong><?= session('errors.solusi') ?></strong>
-                    </span>
-                <?php endif ?>
-            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

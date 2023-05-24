@@ -121,6 +121,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/solusi" class="nav-link">
+                                <i class="nav-icon fas fa-tasks"></i>
+                                <p>
+                                    Solusi
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/riwayat" class="nav-link">
+                                <i class="nav-icon fas fa-history"></i>
+                                <p>
+                                    Riwayat Diagnosa
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/user" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>

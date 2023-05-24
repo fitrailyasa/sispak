@@ -19,10 +19,6 @@ Detail Kerusakan
             <label for="nama_kerusakan">Nama Kerusakan</label>
             <input type="text" class="form-control" id="nama_kerusakan" value="<?= $kerusakan['nama_kerusakan']; ?>" readonly>
         </div>
-        <div class="form-group">
-            <label for="solusi">Solusi</label>
-            <textarea class="form-control" id="solusi" rows="4" readonly><?= $kerusakan['solusi']; ?></textarea>
-        </div>
     </div>
     <!-- /.card-body -->
     <div class="card-footer">

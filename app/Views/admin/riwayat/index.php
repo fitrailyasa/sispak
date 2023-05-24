@@ -1,15 +1,12 @@
 <?= $this->extend('layouts/admin/app') ?>
 <?= $this->section('title') ?>
-Data Kerusakan
+Data Riwayat Diagnosis
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Tabel Data Kerusakan</h3>
-        <div class="card-tools">
-            <a href="<?= route_to('kerusakan/create') ?>" class="btn btn-sm btn-secondary">Tambah Jenis Kerusakan</a>
-        </div>
+        <h3 class="card-title">Tabel Data Riwayat Diagnosis</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -17,31 +14,32 @@ Data Kerusakan
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kode kerusakan</th>
-                    <th>Nama kerusakan</th>
+                    <th>Token</th>
+                    <th>Merk Laptop</th>
+                    <th>Tipe Laptop</th>
+                    <th>Kerusakan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $i = 1;
-                foreach ($kerusakans as $kerusakan) : ?>
+                foreach ($riwayats as $riwayat) : ?>
                     <tr>
                         <td><?= $i++ ?></td>
-                        <td><?= $kerusakan['kode_kerusakan'] ?></td>
-                        <td><?= $kerusakan['nama_kerusakan'] ?></td>
+                        <td><?= $riwayat['token'] ?></td>
+                        <td><?= $riwayat['merk_laptop'] ?></td>
+                        <td><?= $riwayat['tipe_laptop'] ?></td>
+                        <td><?= $riwayat['kerusakan_id'] ?></td>
                         <td class="manage-row">
-                            <a href="<?= route_to('kerusakan/show', $kerusakan['id']) ?>" class="show-button">
+                            <a href="<?= route_to('riwayat/show', $riwayat['id']) ?>" class="show-button">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="<?= route_to('kerusakan/edit', $kerusakan['id']) ?>" class="edit-button">
-                                <i class="fa-solid fa-marker"></i>
-                            </a>
                             <!-- Button trigger modal -->
-                            <a href="<?= route_to('kerusakan/delete', $kerusakan['id']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $kerusakan['id'] ?>">
+                            <a href="<?= route_to('riwayat/delete', $riwayat['id']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $riwayat['id'] ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             <!-- Modal -->
-                            <div class="modal fade bd-example-modal-sm<?= $kerusakan['id'] ?>" tabindex="-1" role="dialog" aria-hidden="">
+                            <div class="modal fade bd-example-modal-sm<?= $riwayat['id'] ?>" tabindex="-1" role="dialog" aria-hidden="">
                                 <div class="modal-dialog ">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -50,7 +48,7 @@ Data Kerusakan
                                         </div>
                                         <div class="modal-body">Apakah Anda yakin ingin menghapus data?</div>
                                         <div class="modal-footer">
-                                            <form action="<?= route_to('kerusakan/delete', $kerusakan['id']) ?>" method="POST">
+                                            <form action="<?= route_to('riwayat/delete', $riwayat['id']) ?>" method="POST">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="submit" class="btn btn-danger light" name="" id="" value="Hapus">
@@ -68,8 +66,10 @@ Data Kerusakan
             <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Kode kerusakan</th>
-                    <th>Nama kerusakan</th>
+                    <th>Token</th>
+                    <th>Merk Laptop</th>
+                    <th>Tipe Laptop</th>
+                    <th>Kerusakan</th>
                     <th>Aksi</th>
                 </tr>
             </tfoot>

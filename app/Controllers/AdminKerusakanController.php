@@ -22,8 +22,7 @@ class AdminKerusakanController extends BaseController
     {
         $validationRules = [
             'kode_kerusakan' => 'required|is_unique[kerusakan.kode_kerusakan]',
-            'nama_kerusakan' => 'required',
-            'solusi' => 'required'
+            'nama_kerusakan' => 'required'
         ];
 
         $validationMessages = [
@@ -33,9 +32,6 @@ class AdminKerusakanController extends BaseController
             ],
             'nama_kerusakan' => [
                 'required' => 'Nama kerusakan harus diisi.'
-            ],
-            'solusi' => [
-                'required' => 'Solusi harus diisi.'
             ]
         ];
 
@@ -46,7 +42,6 @@ class AdminKerusakanController extends BaseController
         $data = [
             'kode_kerusakan' => $this->request->getVar('kode_kerusakan'),
             'nama_kerusakan' => $this->request->getVar('nama_kerusakan'),
-            'solusi' => $this->request->getVar('solusi'),
             'created_at' => date('Y-m-d H:i:s')
         ];
 
@@ -84,8 +79,7 @@ class AdminKerusakanController extends BaseController
     {
         $validationRules = [
             'kode_kerusakan' => "required|is_unique[kerusakan.kode_kerusakan,id_kerusakan,$id]",
-            'nama_kerusakan' => 'required',
-            'solusi' => 'required'
+            'nama_kerusakan' => 'required'
         ];
 
         $validationMessages = [
@@ -95,9 +89,6 @@ class AdminKerusakanController extends BaseController
             ],
             'nama_kerusakan' => [
                 'required' => 'Nama kerusakan harus diisi.'
-            ],
-            'solusi' => [
-                'required' => 'Solusi harus diisi.'
             ]
         ];
 
@@ -108,7 +99,6 @@ class AdminKerusakanController extends BaseController
         $data = [
             'kode_kerusakan' => $this->request->getVar('kode_kerusakan'),
             'nama_kerusakan' => $this->request->getVar('nama_kerusakan'),
-            'solusi' => $this->request->getVar('solusi'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
