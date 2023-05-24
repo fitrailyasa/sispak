@@ -25,7 +25,8 @@ class CreateGejalaTable extends Migration
                 ],
                 'bobot' => [
                     'type' => 'INT',
-                    'constraint' => 11
+                    'constraint' => 11,
+                    'default' => 1
                 ],
                 'created_at' => [
                     'type' => 'DATETIME'

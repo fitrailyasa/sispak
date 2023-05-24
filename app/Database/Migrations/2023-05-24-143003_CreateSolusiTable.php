@@ -19,8 +19,8 @@ class CreateSolusiTable extends Migration
                 'constraint' => 11,
             ],
             'nama_solusi' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
+                'type' => 'TEXT',
+                'null' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
