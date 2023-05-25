@@ -1919,7 +1919,7 @@ class IonAuthModel
 	 * @return boolean
 	 * @author Ben Edmunds
 	 */
-	public function setLang(string $lang='en'): bool
+	public function setLang(string $lang='id'): bool
 	{
 		$this->triggerEvents('set_lang');
 

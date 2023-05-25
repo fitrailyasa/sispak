@@ -28,7 +28,7 @@ return [
 	'login_identity_label'  => 'Email/Username:',
 	'login_password_label'  => 'Kata Sandi:',
 	'login_remember_label'  => 'Ingatkan Saya:',
-	'login_submit_btn'      => 'Login',
+	'login_submit_btn'      => 'Masuk',
 	'login_forgot_password' => 'Lupa Kata Sandi?',
 
 	// Index

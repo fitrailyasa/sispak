@@ -12422,7 +12422,7 @@
         },
     });
 
-    moment.locale('en');
+    moment.locale('id');
 
     return moment;
 
