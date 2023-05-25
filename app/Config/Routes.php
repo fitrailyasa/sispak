@@ -30,21 +30,8 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-
-// LOGIN
-$routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
-    
-    // ADMIN
+// ADMIN
     $routes->get('dashboard', 'AdminDashboardController::index');
-
-    // CRUD USER
-    $routes->get('user', 'AdminUserController::index');
-    $routes->get('user/create', 'AdminUserController::create');
-    $routes->post('user/store', 'AdminUserController::store', ['as' => 'user/store']);
-    $routes->get('user/show/(:num)', 'AdminUserController::show/$1', ['as' => 'user/show']);
-    $routes->get('user/edit/(:num)', 'AdminUserController::edit/$1', ['as' => 'user/edit']);
-    $routes->post('user/update/(:num)', 'AdminUserController::update/$1', ['as' => 'user/update']);
-    $routes->delete('user/delete/(:num)', 'AdminUserController::destroy/$1', ['as' => 'user/delete']);
 
     // CRUD KERUSAKAN
     $routes->get('kerusakan', 'AdminKerusakanController::index');
@@ -78,6 +65,10 @@ $routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes
     $routes->get('riwayat/show/(:num)', 'AdminRiwayatController::show/$1', ['as' => 'riwayat/show']);
     $routes->delete('riwayat/delete/(:num)', 'AdminRiwayatController::destroy/$1', ['as' => 'riwayat/delete']);
 
+
+// LOGIN
+$routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
+    
 	$routes->add('login', 'Auth::login');
 	$routes->get('logout', 'Auth::logout');
 	$routes->add('forgot_password', 'Auth::forgot_password');
