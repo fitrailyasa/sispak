@@ -67,7 +67,7 @@
                     <div class="user-panel d-flex flex-col">
                         <form id="logout-form" action="#" method="POST" hidden>
                         </form>
-                        <a href="/login" class="nav-link text-white" onclick="">
+                        <a href="auth/login" class="nav-link text-white" onclick="">
                             <i class="nav-icon fas fa-sign-in"></i>
                             <span>
                                 Login Admin

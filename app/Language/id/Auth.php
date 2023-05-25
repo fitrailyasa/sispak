@@ -24,12 +24,12 @@ return [
 
 	// Login
 	'login_heading'         => 'Login',
-	'login_subheading'      => 'Silakan login dengan email/username dan password anda.',
-	'login_identity_label'  => 'Email/Username:',
-	'login_password_label'  => 'Kata Sandi:',
-	'login_remember_label'  => 'Ingatkan Saya:',
+	'login_subheading'      => '',
+	'login_identity_label'  => '',
+	'login_password_label'  => '',
+	'login_remember_label'  => '',
 	'login_submit_btn'      => 'Masuk',
-	'login_forgot_password' => 'Lupa Kata Sandi?',
+	'login_forgot_password' => '',
 
 	// Index
 	'index_heading'           => 'Pengguna',
