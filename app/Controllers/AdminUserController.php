@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
+use App\Models\AuthModel;
 
 class AdminUserController extends BaseController
 {
     public function index()
     {
-        $userModel = new UserModel();
-        $users = $userModel->findAll();
+        $authModel = new AuthModel();
+        $users = $authModel->findAll();
         return view('admin/user/index', ['users' => $users]);
     }
 
@@ -51,16 +51,16 @@ class AdminUserController extends BaseController
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        $userModel = new UserModel();
-        $userModel->insert($data);
+        $authModel = new AuthModel();
+        $authModel->insert($data);
 
         return redirect()->to('/user');
     }
 
     public function show($id)
     {
-        $userModel = new UserModel();
-        $user = $userModel->find($id);
+        $authModel = new AuthModel();
+        $user = $authModel->find($id);
 
         if (!$user) {
             return redirect()->back()->with('error', 'User not found.');
@@ -71,8 +71,8 @@ class AdminUserController extends BaseController
 
     public function edit($id)
     {
-        $userModel = new UserModel();
-        $user = $userModel->find($id);
+        $authModel = new AuthModel();
+        $user = $authModel->find($id);
 
         if (!$user) {
             return redirect()->back()->with('error', 'User not found.');
@@ -114,8 +114,8 @@ class AdminUserController extends BaseController
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        $userModel = new UserModel();
-        $user = $userModel->find($id);
+        $authModel = new AuthModel();
+        $user = $authModel->find($id);
 
         if (!$user) {
             return redirect()->back()->with('error', 'User not found.');
@@ -129,8 +129,8 @@ class AdminUserController extends BaseController
 
     public function destroy($id)
     {
-        $userModel = new UserModel();
-        $userModel->delete($id);
+        $authModel = new AuthModel();
+        $authModel->delete($id);
 
         return redirect()->to('/user');
     }
