@@ -17,11 +17,11 @@ Diagnosa
             <?php $i = 1;
             foreach ($gejalas as $gejala) : ?>
                 <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label><br>
-                <p><input type="radio" name="bobot" value="0"> Tidak Ada</p>
-                <p><input type="radio" name="bobot" value="0.25"> Jarang</p>
-                <p><input type="radio" name="bobot" value="0.5"> Cukup Sering</p>
-                <p><input type="radio" name="bobot" value="0.75"> Sering</p>
-                <p><input type="radio" name="bobot" value="1"> Sangat Sering</p>
+                <p><input type="radio" name="bobot<?= $gejala['id'] ?>" value="0"> Tidak Ada</p>
+                <p><input type="radio" name="bobot<?= $gejala['id'] ?>" value="0.25"> Jarang</p>
+                <p><input type="radio" name="bobot<?= $gejala['id'] ?>" value="0.5"> Cukup Sering</p>
+                <p><input type="radio" name="bobot<?= $gejala['id'] ?>" value="0.75"> Sering</p>
+                <p><input type="radio" name="bobot<?= $gejala['id'] ?>" value="1"> Sangat Sering</p>
                 <br>
             <?php endforeach; ?>
 

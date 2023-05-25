@@ -23,11 +23,6 @@ class CreateGejalaTable extends Migration
                     'type' => 'VARCHAR',
                     'constraint' => 255
                 ],
-                'bobot' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'default' => 1
-                ],
                 'created_at' => [
                     'type' => 'DATETIME'
                 ],

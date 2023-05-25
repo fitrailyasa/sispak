@@ -22,8 +22,7 @@ class AdminGejalaController extends BaseController
     {
         $validationRules = [
             'kode_gejala' => 'required|is_unique[gejala.kode_gejala]',
-            'nama_gejala' => 'required',
-            'bobot' => 'required|numeric'
+            'nama_gejala' => 'required'
         ];
 
         $validationMessages = [
@@ -33,10 +32,6 @@ class AdminGejalaController extends BaseController
             ],
             'nama_gejala' => [
                 'required' => 'Nama gejala harus diisi.',
-            ],
-            'bobot' => [
-                'required' => 'Bobot harus diisi.',
-                'numeric' => 'Bobot harus berupa angka.'
             ]
         ];
 
@@ -47,7 +42,6 @@ class AdminGejalaController extends BaseController
         $data = [
             'kode_gejala' => $this->request->getPost('kode_gejala'),
             'nama_gejala' => $this->request->getPost('nama_gejala'),
-            'bobot' => $this->request->getPost('bobot'),
             'created_at' => date('Y-m-d H:i:s')
         ];
 
@@ -85,8 +79,7 @@ class AdminGejalaController extends BaseController
     {
         $validationRules = [
             'kode_gejala' => "required|is_unique[gejala.kode_gejala,id_gejala,$id]",
-            'nama_gejala' => 'required',
-            'bobot' => 'required|numeric'
+            'nama_gejala' => 'required'
         ];
 
         $validationMessages = [
@@ -96,10 +89,6 @@ class AdminGejalaController extends BaseController
             ],
             'nama_gejala' => [
                 'required' => 'Nama gejala harus diisi.'
-            ],
-            'bobot' => [
-                'required' => 'Bobot harus diisi.',
-                'numeric' => 'Bobot harus berupa angka.'
             ]
         ];
 
@@ -110,7 +99,6 @@ class AdminGejalaController extends BaseController
         $data = [
             'kode_gejala' => $this->request->getPost('kode_gejala'),
             'nama_gejala' => $this->request->getPost('nama_gejala'),
-            'bobot' => $this->request->getPost('bobot'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
 

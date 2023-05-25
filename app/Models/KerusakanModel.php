@@ -14,4 +14,14 @@ class KerusakanModel extends Model
     {
         return $this->hasMany('App\Models\SolusiModel', 'kerusakan_id', 'id');
     }
+
+    public function riwayat()
+    {
+        return $this->hasMany('App\Models\RiwayatModel', 'kerusakan_id', 'id');
+    }
+
+    public function naiveBayes()
+    {
+        return $this->hasMany('App\Models\NaiveBayesModel', 'kerusakan_id', 'id');
+    }
 }
