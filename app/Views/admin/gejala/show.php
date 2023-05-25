@@ -19,10 +19,6 @@ Detail Gejala
             <label for="nama_gejala">Nama Gejala</label>
             <input type="text" class="form-control" id="nama_gejala" value="<?= $gejala['nama_gejala']; ?>" readonly>
         </div>
-        <div class="form-group">
-            <label for="bobot">Bobot</label>
-            <input type="text" class="form-control" id="bobot" value="<?= $gejala['bobot']; ?>" readonly>
-        </div>
     </div>
     <!-- /.card-body -->
     <div class="card-footer">

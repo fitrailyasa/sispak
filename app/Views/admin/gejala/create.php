@@ -32,15 +32,6 @@ Tambah Gejala
                     </span>
                 <?php endif ?>
             </div>
-            <div class="form-group">
-                <label for="bobot">Bobot</label>
-                <input type="number" class="form-control" id="bobot" placeholder="Masukkan bobot" value="<?= old('bobot'); ?>" name="bobot" required>
-                <?php if (session('errors.bobot')) : ?>
-                    <span class="invalid-feedback" role="alert">
-                        <strong><?= session('errors.bobot') ?></strong>
-                    </span>
-                <?php endif ?>
-            </div>
             <div class="">
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
