@@ -20,11 +20,6 @@ class KerusakanModel extends Model
         return $this->hasMany('App\Models\RiwayatModel', 'kode_kerusakan', 'kode_kerusakan');
     }
 
-    public function naiveBayes()
-    {
-        return $this->hasMany('App\Models\NaiveBayesModel', 'kode_kerusakan', 'kode_kerusakan');
-    }
-
     public function rule()
     {
         return $this->hasMany('App\Models\RuleModel', 'kode_kerusakan', 'kode_kerusakan');
