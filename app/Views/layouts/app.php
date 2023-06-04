@@ -28,6 +28,11 @@
     <link rel="stylesheet" href="<?= base_url('plugins/summernote/summernote-bs4.min.css') ?>">
     <script src="https://kit.fontawesome.com/2a99f4df77.js" crossorigin="anonymous"></script>
 
+    <!-- Sweet Alert -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('assets/favicon/apple-icon-57x57.png') ?>">
     <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url('assets/favicon/apple-icon-60x60.png') ?>">
@@ -67,7 +72,7 @@
                     <div class="user-panel d-flex flex-col">
                         <form id="logout-form" action="#" method="POST" hidden>
                         </form>
-                        <a href="auth/login" class="nav-link text-white" onclick="">
+                        <a href="/login" class="nav-link text-white" onclick="">
                             <i class="nav-icon fas fa-sign-in"></i>
                             <span>
                                 Login Admin
