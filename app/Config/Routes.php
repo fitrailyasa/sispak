@@ -71,7 +71,7 @@ $routes->delete('riwayat/delete/(:num)', 'AdminRiwayatController::destroy/$1', [
 
 // DIAGNOSIS
 $routes->get('diagnosis', 'DiagnosisController::index', ['as' => 'diagnosis']);
-$routes->get('diagnosis/hasil', 'DiagnosisController::hasil', ['as' => 'diagnosis/hasil']);
+$routes->post('diagnosis/hasil', 'DiagnosisController::hasil', ['as' => 'diagnosis/hasil']);
 
 
 /*
