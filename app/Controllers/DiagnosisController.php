@@ -32,14 +32,14 @@ class DiagnosisController extends BaseController
 
 //// 2) Menghitung nilai 𝑃(𝑎𝑖|𝑣𝑗)
 
-// 𝑃(nc17|$kode_kerusakan) = (0 + 41 * 0.045)/(1 + 41) = 0.0439
+// 𝑃(nc17|$kode_kerusakan) = (0 + 41 * 0.045)/(1 + 41) = 0.0439 (4 angka belakang koma)
 // 𝑃(nc35|$kode_kerusakan) = (0 + 41 * 0.045)/(1 + 41) = 0.0439
 // 𝑃(nc07|$kode_kerusakan) = (0 + 41 * 0.045)/(1 + 41) = 0.0439
 
 //// 3) Menghitung 𝑃(𝑎𝑖|𝑣𝑗) 𝑥 𝑃(𝑣𝑗) untuk tiap 𝑣.
 
 // 𝑃(a𝑗|vj) = 𝑃(nc17|$kode_kerusakan) * 𝑃(nc35|$kode_kerusakan) * 𝑃(nc07|$kode_kerusakan)
-// = 0.0439 * 0.0439 * 0.0439 = 0.00008720
+// = 0.0439 * 0.0439 * 0.0439 = 0.00000380720 (11 angka belakang koma)
 
 // Contoh bobot gejala 1 = 0.6, bobot gejala 2 = 0.75, dan bobot gejala 3 = 0.25
 
@@ -57,3 +57,6 @@ class DiagnosisController extends BaseController
 // 𝐶𝐹[ℎ, 𝑠1&𝑠2&𝑠3] = 0.925
 
 // Persentase = 0.925 * 100 = 92.5%
+
+
+// 
