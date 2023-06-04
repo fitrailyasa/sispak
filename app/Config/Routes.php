@@ -30,7 +30,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/dashboard', 'AdminDashboardController::index', ['filter' => 'Auth']);
+$routes->get('/dashboard', 'AdminDashboardController::index');
 
 $routes->get('/login', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
@@ -40,34 +40,34 @@ $routes->post('/auth/login', 'Auth::doLogin');
 // CRUD KERUSAKAN
 $routes->get('kerusakan', 'AdminKerusakanController::index', ['filter' => 'Auth']);
 $routes->get('kerusakan/create', 'AdminKerusakanController::create', ['filter' => 'Auth']);
-$routes->post('kerusakan/store', 'AdminKerusakanController::store', ['filter' => 'Auth'], ['as' => 'kerusakan/store']);
-$routes->get('kerusakan/show/(:num)', 'AdminKerusakanController::show/$1', ['filter' => 'Auth'], ['as' => 'kerusakan/show']);
-$routes->get('kerusakan/edit/(:num)', 'AdminKerusakanController::edit/$1', ['filter' => 'Auth'], ['as' => 'kerusakan/edit']);
-$routes->post('kerusakan/update/(:num)', 'AdminKerusakanController::update/$1', ['filter' => 'Auth'], ['as' => 'kerusakan/update']);
-$routes->delete('kerusakan/delete/(:num)', 'AdminKerusakanController::destroy/$1', ['filter' => 'Auth'], ['as' => 'kerusakan/delete']);
+$routes->post('kerusakan/store', 'AdminKerusakanController::store', ['as' => 'kerusakan/store'], ['filter' => 'Auth']);
+$routes->get('kerusakan/show/(:num)', 'AdminKerusakanController::show/$1', ['as' => 'kerusakan/show'], ['filter' => 'Auth']);
+$routes->get('kerusakan/edit/(:num)', 'AdminKerusakanController::edit/$1', ['as' => 'kerusakan/edit'], ['filter' => 'Auth']);
+$routes->post('kerusakan/update/(:num)', 'AdminKerusakanController::update/$1', ['as' => 'kerusakan/update'], ['filter' => 'Auth']);
+$routes->delete('kerusakan/delete/(:num)', 'AdminKerusakanController::destroy/$1', ['as' => 'kerusakan/delete'], ['filter' => 'Auth']);
 
 // CRUD GEJALA
 $routes->get('gejala', 'AdminGejalaController::index', ['filter' => 'Auth']);
 $routes->get('gejala/create', 'AdminGejalaController::create', ['filter' => 'Auth']);
-$routes->post('gejala/store', 'AdminGejalaController::store', ['filter' => 'Auth'], ['as' => 'gejala/store']);
-$routes->get('gejala/show/(:num)', 'AdminGejalaController::show/$1', ['filter' => 'Auth'], ['as' => 'gejala/show']);
-$routes->get('gejala/edit/(:num)', 'AdminGejalaController::edit/$1', ['filter' => 'Auth'], ['as' => 'gejala/edit']);
-$routes->post('gejala/update/(:num)', 'AdminGejalaController::update/$1', ['filter' => 'Auth'], ['as' => 'gejala/update']);
-$routes->delete('gejala/delete/(:num)', 'AdminGejalaController::destroy/$1', ['filter' => 'Auth'], ['as' => 'gejala/delete']);
+$routes->post('gejala/store', 'AdminGejalaController::store', ['as' => 'gejala/store'], ['filter' => 'Auth']);
+$routes->get('gejala/show/(:num)', 'AdminGejalaController::show/$1', ['as' => 'gejala/show'], ['filter' => 'Auth']);
+$routes->get('gejala/edit/(:num)', 'AdminGejalaController::edit/$1', ['as' => 'gejala/edit'], ['filter' => 'Auth']);
+$routes->post('gejala/update/(:num)', 'AdminGejalaController::update/$1', ['as' => 'gejala/update'], ['filter' => 'Auth']);
+$routes->delete('gejala/delete/(:num)', 'AdminGejalaController::destroy/$1', ['as' => 'gejala/delete'], ['filter' => 'Auth']);
 
 // CRUD SOLUSI
 $routes->get('solusi', 'AdminSolusiController::index', ['filter' => 'Auth']);
 $routes->get('solusi/create', 'AdminSolusiController::create', ['filter' => 'Auth']);
-$routes->post('solusi/store', 'AdminSolusiController::store', ['filter' => 'Auth'], ['as' => 'solusi/store']);
-$routes->get('solusi/show/(:num)', 'AdminSolusiController::show/$1', ['filter' => 'Auth'], ['as' => 'solusi/show']);
-$routes->get('solusi/edit/(:num)', 'AdminSolusiController::edit/$1', ['filter' => 'Auth'], ['as' => 'solusi/edit']);
-$routes->post('solusi/update/(:num)', 'AdminSolusiController::update/$1', ['filter' => 'Auth'], ['as' => 'solusi/update']);
-$routes->delete('solusi/delete/(:num)', 'AdminSolusiController::destroy/$1', ['filter' => 'Auth'], ['as' => 'solusi/delete']);
+$routes->post('solusi/store', 'AdminSolusiController::store', ['as' => 'solusi/store'], ['filter' => 'Auth']);
+$routes->get('solusi/show/(:num)', 'AdminSolusiController::show/$1', ['as' => 'solusi/show'], ['filter' => 'Auth']);
+$routes->get('solusi/edit/(:num)', 'AdminSolusiController::edit/$1', ['as' => 'solusi/edit'], ['filter' => 'Auth']);
+$routes->post('solusi/update/(:num)', 'AdminSolusiController::update/$1', ['as' => 'solusi/update'], ['filter' => 'Auth']);
+$routes->delete('solusi/delete/(:num)', 'AdminSolusiController::destroy/$1', ['as' => 'solusi/delete'], ['filter' => 'Auth']);
 
 // CRUD RIWAYAT
 $routes->get('riwayat', 'AdminRiwayatController::index', ['filter' => 'Auth']);
-$routes->get('riwayat/show/(:num)', 'AdminRiwayatController::show/$1', ['filter' => 'Auth'], ['as' => 'riwayat/show']);
-$routes->delete('riwayat/delete/(:num)', 'AdminRiwayatController::destroy/$1', ['filter' => 'Auth'], ['as' => 'riwayat/delete']);
+$routes->get('riwayat/show/(:num)', 'AdminRiwayatController::show/$1', ['as' => 'riwayat/show'], ['filter' => 'Auth']);
+$routes->delete('riwayat/delete/(:num)', 'AdminRiwayatController::destroy/$1', ['as' => 'riwayat/delete'], ['filter' => 'Auth']);
 
 // DIAGNOSIS
 $routes->get('diagnosis', 'DiagnosisController::index', ['as' => 'diagnosis']);
