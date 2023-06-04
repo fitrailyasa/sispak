@@ -21,12 +21,12 @@ class AdminSolusiController extends BaseController
     public function store()
     {
         $validationRules = [
-            'kerusakan_id' => 'required',
+            'kode_kerusakan' => 'required',
             'nama_solusi' => 'required'
         ];
 
         $validationMessages = [
-            'kerusakan_id' => [
+            'kode_kerusakan' => [
                 'required' => 'ID kerusakan harus diisi.',
             ],
             'nama_solusi' => [
@@ -39,7 +39,7 @@ class AdminSolusiController extends BaseController
         }
 
         $data = [
-            'kerusakan_id' => $this->request->getVar('kerusakan_id'),
+            'kode_kerusakan' => $this->request->getVar('kode_kerusakan'),
             'nama_solusi' => $this->request->getVar('nama_solusi'),
             'created_at' => date('Y-m-d H:i:s')
         ];
@@ -77,12 +77,12 @@ class AdminSolusiController extends BaseController
     public function update($id)
     {
         $validationRules = [
-            'kerusakan_id' => "required",
+            'kode_kerusakan' => "required",
             'nama_solusi' => 'required'
         ];
 
         $validationMessages = [
-            'kerusakan_id' => [
+            'kode_kerusakan' => [
                 'required' => 'ID kerusakan harus diisi.'
             ],
             'nama_solusi' => [
@@ -95,7 +95,7 @@ class AdminSolusiController extends BaseController
         }
 
         $data = [
-            'kerusakan_id' => $this->request->getVar('kerusakan_id'),
+            'kode_kerusakan' => $this->request->getVar('kode_kerusakan'),
             'nama_solusi' => $this->request->getVar('nama_solusi'),
             'updated_at' => date('Y-m-d H:i:s')
         ];

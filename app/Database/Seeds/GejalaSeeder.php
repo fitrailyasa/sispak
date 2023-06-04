@@ -52,8 +52,6 @@ class GejalaSeeder extends Seeder
             ['kode_gejala' => 'G40', 'nama_gejala' => 'Sistem Operasi Tidak Muncul', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
             ['kode_gejala' => 'G41', 'nama_gejala' => 'Saat di tekan tombol power tidak menyala', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
         ];
-
-        $model = new GejalaModel();
-        $model->insertBatch($gejalaData);
+        $this->db->table('gejala')->insertBatch($gejalaData);
     }
 }

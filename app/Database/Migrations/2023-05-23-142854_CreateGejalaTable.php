@@ -10,11 +10,6 @@ class CreateGejalaTable extends Migration
     {
         $this->forge->addField(
             [
-                'id' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'auto_increment' => true
-                ],
                 'kode_gejala' => [
                     'type' => 'VARCHAR',
                     'constraint' => 255
@@ -32,7 +27,7 @@ class CreateGejalaTable extends Migration
             ]
         );
 
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('kode_gejala', true);
         $this->forge->createTable('gejala');
     }
 

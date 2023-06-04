@@ -12,7 +12,6 @@ class CreateCFPakarTable extends Migration
             'id' => [
                 'type'              => 'INT',
                 'constraint'        => 11,
-                'unsigned'          => true,
                 'auto_increment'    => true
             ],
             'certainty_term' => [
@@ -23,6 +22,10 @@ class CreateCFPakarTable extends Migration
                 'type'              => 'FLOAT'
             ]
         ]);
+
+        $this->forge->addKey('id', true);
+
+        $this->forge->createTable('cf_pakar');
     }
 
     public function down()

@@ -14,9 +14,9 @@ class CreateSolusiTable extends Migration
                 'constraint' => 11,
                 'auto_increment' => true,
             ],
-            'kerusakan_id' => [
-                'type' => 'INT',
-                'constraint' => 11,
+            'kode_kerusakan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
             ],
             'nama_solusi' => [
                 'type' => 'TEXT',
@@ -34,7 +34,7 @@ class CreateSolusiTable extends Migration
 
         $this->forge->addKey('id', true);
 
-        $this->forge->addForeignKey('kerusakan_id', 'kerusakan', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('kode_kerusakan', 'kerusakan', 'kode_kerusakan', 'CASCADE', 'CASCADE');
 
         $this->forge->createTable('solusi');
     }

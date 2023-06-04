@@ -8,10 +8,10 @@ class RiwayatModel extends Model
 {
     protected $table = 'riwayat';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['token', 'kerusakan_id', 'merk_laptop', 'tipe_laptop', 'created_at', 'updated_at'];
+    protected $allowedFields = ['token', 'kode_kerusakan', 'merk_laptop', 'tipe_laptop', 'created_at', 'updated_at'];
 
     public function kerusakan()
     {
-        return $this->belongsTo('App\Models\KerusakanModel', 'kerusakan_id', 'id');
+        return $this->belongsTo('App\Models\KerusakanModel', 'kode_kerusakan', 'kode_kerusakan');
     }
 }

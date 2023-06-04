@@ -30,5 +30,6 @@ class CFPenggunaSeeder extends Seeder
                 'bobot_pengguna' => 0
             ]
         ];
+        $this->db->table('cf_pengguna')->insertBatch($cf_pengguna);
     }
 }

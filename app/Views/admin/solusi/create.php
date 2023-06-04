@@ -15,11 +15,11 @@ Tambah Solusi
         <?= csrf_field() ?>
         <div class="card-body">
             <div class="form-group">
-                <label for="kerusakan_id">ID Kerusakan</label>
-                <input type="text" class="form-control" id="kerusakan_id" placeholder="Masukkan ID kerusakan" value="<?= old('kerusakan_id'); ?>" name="kerusakan_id" required autocomplete="kerusakan_id" autofocus>
-                <?php if (session('errors.kerusakan_id')) : ?>
+                <label for="kode_kerusakan">ID Kerusakan</label>
+                <input type="text" class="form-control" id="kode_kerusakan" placeholder="Masukkan ID kerusakan" value="<?= old('kode_kerusakan'); ?>" name="kode_kerusakan" required autocomplete="kode_kerusakan" autofocus>
+                <?php if (session('errors.kode_kerusakan')) : ?>
                     <span class="invalid-feedback" role="alert">
-                        <strong><?= session('errors.kerusakan_id') ?></strong>
+                        <strong><?= session('errors.kode_kerusakan') ?></strong>
                     </span>
                 <?php endif ?>
             </div>

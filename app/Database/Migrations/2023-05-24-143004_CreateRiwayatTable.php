@@ -18,9 +18,9 @@ class CreateRiwayatTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'kerusakan_id' => [
-                'type' => 'INT',
-                'constraint' => 11,
+            'kode_kerusakan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
             ],
             'merk_laptop' => [
                 'type' => 'VARCHAR',
@@ -42,7 +42,7 @@ class CreateRiwayatTable extends Migration
 
         $this->forge->addKey('id', true);
 
-        $this->forge->addForeignKey('kerusakan_id', 'kerusakan', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('kode_kerusakan', 'kerusakan', 'kode_kerusakan', 'CASCADE', 'CASCADE');
 
         $this->forge->createTable('riwayat');
     }

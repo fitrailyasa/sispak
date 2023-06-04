@@ -10,11 +10,6 @@ class CreateKerusakanTable extends Migration
     {
         $this->forge->addField(
             [
-                'id' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'auto_increment' => true
-                ],
                 'kode_kerusakan' => [
                     'type' => 'VARCHAR',
                     'constraint' => 255
@@ -32,7 +27,7 @@ class CreateKerusakanTable extends Migration
             ]
         );
 
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('kode_kerusakan', true);
         $this->forge->createTable('kerusakan');
     }
 

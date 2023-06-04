@@ -33,8 +33,6 @@ class KerusakanSeeder extends Seeder
             ['kode_kerusakan' => 'K21', 'nama_kerusakan' => 'CD/DVD/ROM/RW', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
             ['kode_kerusakan' => 'K22', 'nama_kerusakan' => 'Bios Error', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
         ];
-
-        $model = new KerusakanModel();
-        $model->insertBatch($kerusakanData);
+        $this->db->table('kerusakan')->insertBatch($kerusakanData);
     }
 }

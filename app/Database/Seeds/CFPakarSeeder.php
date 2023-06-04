@@ -31,6 +31,6 @@ class CFPakarSeeder extends Seeder
             ]
         ];
 
-        $this->db->table('certainty_factor')->insertBatch($certainty_factor);
+        $this->db->table('cf_pakar')->insertBatch($cf_pakar);
     }
 }

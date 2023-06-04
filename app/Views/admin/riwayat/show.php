@@ -24,8 +24,8 @@ Detail Riwayat Diagnosis
             <input type="text" class="form-control" id="tipe_laptop" value="<?= $riwayat['tipe_laptop']; ?>" readonly>
         </div>
         <div class="form-group">
-            <label for="kerusakan_id">Kerusakan</label>
-            <input type="text" class="form-control" id="kerusakan_id" value="<?= $riwayat['kerusakan_id']; ?>" readonly>
+            <label for="kode_kerusakan">Kerusakan</label>
+            <input type="text" class="form-control" id="kode_kerusakan" value="<?= $riwayat['kode_kerusakan']; ?>" readonly>
         </div>
     </div>
     <!-- /.card-body -->

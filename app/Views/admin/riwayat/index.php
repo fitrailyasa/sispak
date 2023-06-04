@@ -29,7 +29,7 @@ Data Riwayat Diagnosis
                         <td><?= $riwayat['token'] ?></td>
                         <td><?= $riwayat['merk_laptop'] ?></td>
                         <td><?= $riwayat['tipe_laptop'] ?></td>
-                        <td><?= $riwayat['kerusakan_id'] ?></td>
+                        <td><?= $riwayat['kode_kerusakan'] ?></td>
                         <td class="manage-row">
                             <a href="<?= route_to('riwayat/show', $riwayat['id']) ?>" class="show-button">
                                 <i class="fa-solid fa-eye"></i>

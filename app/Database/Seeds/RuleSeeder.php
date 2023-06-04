@@ -305,5 +305,6 @@ class RuleSeeder extends Seeder
                 'kode_kerusakan' => 'K22'
             ],
         ];
+        $this->db->table('rule')->insertBatch($rule);
     }
 }

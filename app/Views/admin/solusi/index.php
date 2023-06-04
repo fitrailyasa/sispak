@@ -27,7 +27,7 @@ Data Solusi
                 foreach ($solusis as $solusi) : ?>
                     <tr>
                         <td><?= $i++ ?></td>
-                        <td><?= $solusi['kerusakan_id'] ?></td>
+                        <td><?= $solusi['kode_kerusakan'] ?></td>
                         <td><?= $solusi['nama_solusi'] ?></td>
                         <td class="manage-row">
                             <a href="<?= route_to('solusi/show', $solusi['id']) ?>" class="show-button">
