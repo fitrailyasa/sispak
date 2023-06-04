@@ -33,11 +33,9 @@ $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'AdminDashboardController::index', ['filter' => 'Auth']);
 
 $routes->get('/login', 'Auth::login');
-$routes->get('/register', 'Auth::register');
 $routes->get('/logout', 'Auth::logout');
 
 $routes->post('/auth/login', 'Auth::doLogin');
-$routes->post('/auth/register', 'Auth::doRegister');
 
 // CRUD KERUSAKAN
 $routes->get('kerusakan', 'AdminKerusakanController::index', ['filter' => 'Auth']);

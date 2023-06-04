@@ -137,7 +137,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="auth/logout" class="nav-link">
+                            <a href="/logout" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out"></i>
                                 <p>
                                     Logout
