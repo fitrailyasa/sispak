@@ -16,11 +16,6 @@ class Auth extends BaseController
         return view('auth/login');
     }
 
-    public function register()
-    {
-        return view('auth/register');
-    }
-
     public function doLogin()
     {
         $session = session();
@@ -53,60 +48,6 @@ class Auth extends BaseController
         }else{
             $session->setFlashdata('error', 'Username or Email does not exit!');
             return redirect()->back()->withInput();
-        }
-    }
-
-    public function doRegister()
-    {
-        $rules = [
-            'username' => [
-                'rules' => 'required|is_unique[user.username]|min_length[4]|alpha_numeric',
-                'errors' => [
-                    'required' => 'You must choose a username.',
-                    'is_unique' => 'Username has been used.',
-                    'alpha_numeric' => 'username contains only letters and numbers.'
-                ]
-            ],
-            'email' => [
-                'rules' => 'required|valid_email|valid_emails|is_unique[user.email]|min_length[4]',
-                'errors' => [
-                    'required' => 'Please insert an e-mail.',
-                    'valid_email' => 'Enter the correct e-mail.',
-                    'valid_emails' => 'Enter the correct e-mail.',
-                    'is_unique' => 'Email has been used.'
-                ]
-            ],
-            'password' => [
-                'rules' => 'required|min_length[4]',
-                'errors' => [
-                    'required' => 'Please insert a password.',
-                    'min_length' => 'Your password is too short.'
-                ]
-            ],
-            'confirm' => [
-                'rules' => 'matches[password]',
-                'errors' => [
-                    'matches' => 'Passwords doesnt match!'
-                ]
-            ]
-        ];
-
-        if($this->validate($rules)){
-            $userModel = new UserModel();
-            $data = [
-                'username'     => $this->request->getVar('username'),
-                'email'    => $this->request->getVar('email'),
-                'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                'image' => 'linux.jpg',
-                'role' => '1'
-            ];
-            $userModel->save($data);
-            $session = session();
-            $session->setFlashdata('success', 'Your account has been created. Please log in.');       
-            return redirect()->to('/login');
-        }else{
-            $data['validation'] = $this->validator;
-            echo view('auth/register', $data);
         }
     }
 
