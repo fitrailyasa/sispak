@@ -2,19 +2,34 @@
 
 namespace App\Controllers;
 
+use App\Models\KerusakanModel;
 use App\Models\GejalaModel;
+use App\Models\RuleModel;
+use App\Models\CertaintyFactorModel;
+use App\Models\DiagnosaModel;
 
 class DiagnosisController extends BaseController
 {
     public function index()
     {
-        $gejalaModel = new GejalaModel();
-        $gejalas = $gejalaModel->findAll();
-        return view('diagnosis', ['gejalas' => $gejalas]);
+        $kerusakanModel = new KerusakanModel();
+        $data['kerusakan'] = $kerusakanModel->findAll();
+
+        return view('diagnosis', $data);
     }
 
-    public function hasil()
+    public function diagnosa()
     {
-        return view('hasil');
+        $gejalaModel = new GejalaModel();
+        $ruleModel = new RuleModel();
+        $certaintyFactorModel = new CertaintyFactorModel();
+
+        $gejala = $gejalaModel->findAll();
+        $rule = $ruleModel->findAll();
+        $certaintyFactor = $certaintyFactorModel->findAll();
+
+        // Proses diagnosa dan menampilkan hasilnya
+
+        return view('diagnosa/hasil', $data);
     }
 }
