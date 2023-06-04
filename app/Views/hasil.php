@@ -15,7 +15,12 @@ Hasil Diagnosa
             <div class="d-flex justify-content-between">
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Jenis Kerusakan</b></h4>
-                    <p>K8 Power Supply</p>
+                    <?php $i = 1; foreach ($kerusakans as $kerusakan) : ?>
+                        <?php if ($i < 2) : ?>
+                            <li><?= $kerusakan['nama_kerusakan'] ?></li>
+                        <?php endif; ?>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                 </div>
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Tingkat Keyakinan</b></h4>
@@ -29,8 +34,12 @@ Hasil Diagnosa
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Gejala Kerusakan</b></h4>
                     <ol>
-                        <li>Kabel power mengalami goresan</li>
-                        <li>Tidak ada indikasi daya masuk</li>
+                    <?php $i = 1; foreach ($gejalas as $gejala) : ?>
+                        <?php if ($i < 5) : ?>
+                            <li><?= $gejala['nama_gejala'] ?></li>
+                        <?php endif; ?>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                     </ol>
                 </div>
             </div>
@@ -39,7 +48,25 @@ Hasil Diagnosa
         <div class="m-2">
             <div class="d-flex text-justify">
                 <div class="d-flex mx-4 px-4 flex-column">
-                    <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada Power Supply (K8). Gejala yang Anda sebutkan, seperti kabel power yang mengalami goresan dan tidak ada indikasi daya masuk, menunjukkan bahwa masalah terletak pada power supply komputer.</small></h4>
+                    <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada 
+                        <?php $i = 1; foreach ($kerusakans as $kerusakan) : ?>
+                            <?php if ($i < 2) : ?>
+                                <?= $kerusakan['nama_kerusakan'] ?> (<?= $kerusakan['kode_kerusakan'] ?>)
+                            <?php endif; ?>
+                            <?php $i++; ?>
+                        <?php endforeach; ?>. Gejala yang Anda sebutkan, seperti 
+                        <?php $i = 1; foreach ($gejalas as $gejala) : ?>
+                            <?php if ($i <= 2) : ?>
+                                <?= $gejala['nama_gejala'] ?>,
+                            <?php endif; ?><?php $i++; ?>
+                        <?php endforeach; ?> 
+                        menunjukkan bahwa masalah terletak pada 
+                        <?php $i = 1; foreach ($kerusakans as $kerusakan) : ?>
+                            <?php if ($i < 2) : ?>
+                                <?= $kerusakan['nama_kerusakan'] ?>
+                            <?php endif; ?>
+                            <?php $i++; ?>
+                        <?php endforeach; ?> komputer.</small></h4>
                 </div>
             </div>
         </div>
@@ -49,17 +76,16 @@ Hasil Diagnosa
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Solusi:</b></h4>
                     <ol>
-                        <li>Periksa kabel power secara menyeluruh. Jika terdapat goresan atau kerusakan pada kabel, gantilah dengan kabel power yang baru dan pastikan terhubung dengan baik.</li>
-                        <li>Periksa sumber daya listrik yang digunakan. Pastikan bahwa soket atau stopkontak yang digunakan berfungsi dengan baik.</li>
-                        <li>Jika masalah masih persisten, kemungkinan besar power supply mengalami kerusakan dan perlu diganti. Silakan hubungi teknisi komputer untuk melakukan penggantian power supply yang sesuai.</li>
+                    <?php $i = 1; foreach ($solusis as $solusi) : ?>
+                        <?php if ($i < 5) : ?>
+                            <li><?= $solusi['nama_solusi'] ?></li>
+                        <?php endif; ?>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                     </ol>
-                    <p>Penting untuk mendapatkan bantuan dari teknisi komputer yang berpengalaman jika Anda tidak memiliki pengetahuan atau pengalaman dalam melakukan perbaikan perangkat keras komputer.</p>
-                    <p>Harap dicatat bahwa ini hanya merupakan contoh dan hasil sebenarnya dari sistem pakar akan bergantung pada pengetahuan dan aturan yang ada dalam sistem tersebut.</p>
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 
