@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateDiagnosaTable extends Migration
+class CreateCFPakarTable extends Migration
 {
     public function up()
     {
@@ -15,12 +15,11 @@ class CreateDiagnosaTable extends Migration
                 'unsigned'          => true,
                 'auto_increment'    => true
             ],
-            'kerusakan_id' => [
-                'type'              => 'INT',
-                'constraint'        => 11,
-                'unsigned'          => true
+            'certainty_term' => [
+                'type'              => 'VARCHAR',
+                'constraint'        => 255
             ],
-            'bobot_pengguna' => [
+            'bobot_pakar' => [
                 'type'              => 'FLOAT'
             ]
         ]);
@@ -28,6 +27,6 @@ class CreateDiagnosaTable extends Migration
 
     public function down()
     {
-        $this->forge->dropTable('diagnosa');
+        $this->forge->dropTable('cf_pakar');
     }
 }

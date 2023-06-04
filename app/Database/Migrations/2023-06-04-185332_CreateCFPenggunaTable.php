@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateCertaintyFactorTable extends Migration
+class CreateCFPenggunaTable extends Migration
 {
     public function up()
     {
@@ -15,11 +15,12 @@ class CreateCertaintyFactorTable extends Migration
                 'unsigned'          => true,
                 'auto_increment'    => true
             ],
-            'certainty_term' => [
-                'type'              => 'VARCHAR',
-                'constraint'        => 255
+            'kerusakan_id' => [
+                'type'              => 'INT',
+                'constraint'        => 11,
+                'unsigned'          => true
             ],
-            'bobot_pakar' => [
+            'bobot_pengguna' => [
                 'type'              => 'FLOAT'
             ]
         ]);
@@ -27,6 +28,6 @@ class CreateCertaintyFactorTable extends Migration
 
     public function down()
     {
-        $this->forge->dropTable('certainty_factor');
+        $this->forge->dropTable('cf_pengguna');
     }
 }
