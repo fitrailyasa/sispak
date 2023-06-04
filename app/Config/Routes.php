@@ -41,19 +41,19 @@ $routes->post('/auth/login', 'Auth::doLogin');
 $routes->get('kerusakan', 'AdminKerusakanController::index', ['filter' => 'Auth']);
 $routes->get('kerusakan/create', 'AdminKerusakanController::create', ['filter' => 'Auth']);
 $routes->post('kerusakan/store', 'AdminKerusakanController::store', ['as' => 'kerusakan/store'], ['filter' => 'Auth']);
-$routes->get('kerusakan/show/(:num)', 'AdminKerusakanController::show/$1', ['as' => 'kerusakan/show'], ['filter' => 'Auth']);
-$routes->get('kerusakan/edit/(:num)', 'AdminKerusakanController::edit/$1', ['as' => 'kerusakan/edit'], ['filter' => 'Auth']);
-$routes->post('kerusakan/update/(:num)', 'AdminKerusakanController::update/$1', ['as' => 'kerusakan/update'], ['filter' => 'Auth']);
-$routes->delete('kerusakan/delete/(:num)', 'AdminKerusakanController::destroy/$1', ['as' => 'kerusakan/delete'], ['filter' => 'Auth']);
+$routes->get('kerusakan/show/(:segment)', 'AdminKerusakanController::show/$1', ['as' => 'kerusakan/show'], ['filter' => 'Auth']);
+$routes->get('kerusakan/edit/(:segment)', 'AdminKerusakanController::edit/$1', ['as' => 'kerusakan/edit'], ['filter' => 'Auth']);
+$routes->post('kerusakan/update/(:segment)', 'AdminKerusakanController::update/$1', ['as' => 'kerusakan/update'], ['filter' => 'Auth']);
+$routes->delete('kerusakan/delete/(:segment)', 'AdminKerusakanController::destroy/$1', ['as' => 'kerusakan/delete'], ['filter' => 'Auth']);
 
 // CRUD GEJALA
 $routes->get('gejala', 'AdminGejalaController::index', ['filter' => 'Auth']);
 $routes->get('gejala/create', 'AdminGejalaController::create', ['filter' => 'Auth']);
 $routes->post('gejala/store', 'AdminGejalaController::store', ['as' => 'gejala/store'], ['filter' => 'Auth']);
-$routes->get('gejala/show/(:num)', 'AdminGejalaController::show/$1', ['as' => 'gejala/show'], ['filter' => 'Auth']);
-$routes->get('gejala/edit/(:num)', 'AdminGejalaController::edit/$1', ['as' => 'gejala/edit'], ['filter' => 'Auth']);
-$routes->post('gejala/update/(:num)', 'AdminGejalaController::update/$1', ['as' => 'gejala/update'], ['filter' => 'Auth']);
-$routes->delete('gejala/delete/(:num)', 'AdminGejalaController::destroy/$1', ['as' => 'gejala/delete'], ['filter' => 'Auth']);
+$routes->get('gejala/show/(:segment)', 'AdminGejalaController::show/$1', ['as' => 'gejala/show'], ['filter' => 'Auth']);
+$routes->get('gejala/edit/(:segment)', 'AdminGejalaController::edit/$1', ['as' => 'gejala/edit'], ['filter' => 'Auth']);
+$routes->post('gejala/update/(:segment)', 'AdminGejalaController::update/$1', ['as' => 'gejala/update'], ['filter' => 'Auth']);
+$routes->delete('gejala/delete/(:segment)', 'AdminGejalaController::destroy/$1', ['as' => 'gejala/delete'], ['filter' => 'Auth']);
 
 // CRUD SOLUSI
 $routes->get('solusi', 'AdminSolusiController::index', ['filter' => 'Auth']);

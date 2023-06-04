@@ -30,18 +30,18 @@ Data Gejala
                         <td><?= $gejala['kode_gejala'] ?></td>
                         <td><?= $gejala['nama_gejala'] ?></td>
                         <td class="manage-row">
-                            <a href="<?= route_to('gejala/show', $gejala['id']) ?>" class="show-button">
+                            <a href="<?= route_to('gejala/show', $gejala['kode_gejala']) ?>" class="show-button">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="<?= route_to('gejala/edit', $gejala['id']) ?>" class="edit-button">
+                            <a href="<?= route_to('gejala/edit', $gejala['kode_gejala']) ?>" class="edit-button">
                                 <i class="fa-solid fa-marker"></i>
                             </a>
                             <!-- Button trigger modal -->
-                            <a href="<?= route_to('gejala/delete', $gejala['id']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $gejala['id'] ?>">
+                            <a href="<?= route_to('gejala/delete', $gejala['kode_gejala']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $gejala['kode_gejala'] ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             <!-- Modal -->
-                            <div class="modal fade bd-example-modal-sm<?= $gejala['id'] ?>" tabindex="-1" role="dialog" aria-hidden="">
+                            <div class="modal fade bd-example-modal-sm<?= $gejala['kode_gejala'] ?>" tabindex="-1" role="dialog" aria-hidden="">
                                 <div class="modal-dialog ">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -50,7 +50,7 @@ Data Gejala
                                         </div>
                                         <div class="modal-body">Apakah Anda yakin ingin menghapus data?</div>
                                         <div class="modal-footer">
-                                            <form action="<?= route_to('gejala/delete', $gejala['id']) ?>" method="POST">
+                                            <form action="<?= route_to('gejala/delete', $gejala['kode_gejala']) ?>" method="POST">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="submit" class="btn btn-danger light" name="" id="" value="Hapus">

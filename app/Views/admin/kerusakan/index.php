@@ -30,18 +30,18 @@ Data Kerusakan
                         <td><?= $kerusakan['kode_kerusakan'] ?></td>
                         <td><?= $kerusakan['nama_kerusakan'] ?></td>
                         <td class="manage-row">
-                            <a href="<?= route_to('kerusakan/show', $kerusakan['id']) ?>" class="show-button">
+                            <a href="<?= route_to('kerusakan/show', $kerusakan['kode_kerusakan']) ?>" class="show-button">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="<?= route_to('kerusakan/edit', $kerusakan['id']) ?>" class="edit-button">
+                            <a href="<?= route_to('kerusakan/edit', $kerusakan['kode_kerusakan']) ?>" class="edit-button">
                                 <i class="fa-solid fa-marker"></i>
                             </a>
                             <!-- Button trigger modal -->
-                            <a href="<?= route_to('kerusakan/delete', $kerusakan['id']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $kerusakan['id'] ?>">
+                            <a href="<?= route_to('kerusakan/delete', $kerusakan['kode_kerusakan']) ?>" class="delete-button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm<?= $kerusakan['kode_kerusakan'] ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             <!-- Modal -->
-                            <div class="modal fade bd-example-modal-sm<?= $kerusakan['id'] ?>" tabindex="-1" role="dialog" aria-hidden="">
+                            <div class="modal fade bd-example-modal-sm<?= $kerusakan['kode_kerusakan'] ?>" tabindex="-1" role="dialog" aria-hidden="">
                                 <div class="modal-dialog ">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -50,7 +50,7 @@ Data Kerusakan
                                         </div>
                                         <div class="modal-body">Apakah Anda yakin ingin menghapus data?</div>
                                         <div class="modal-footer">
-                                            <form action="<?= route_to('kerusakan/delete', $kerusakan['id']) ?>" method="POST">
+                                            <form action="<?= route_to('kerusakan/delete', $kerusakan['kode_kerusakan']) ?>" method="POST">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="submit" class="btn btn-danger light" name="" id="" value="Hapus">
