@@ -19,7 +19,7 @@ Hasil Diagnosa
                 </div>
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Tingkat Keyakinan</b></h4>
-                    <p>75%</p>
+                    <p><?= $persentase ?>%</p>
                 </div>
             </div>
         </div>

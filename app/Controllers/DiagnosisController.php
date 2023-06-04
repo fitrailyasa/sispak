@@ -10,6 +10,8 @@ use App\Models\RiwayatModel;
 use App\Models\CFPenggunaModel;
 use App\Models\CFPakarModel;
 
+use CodeIgniter\Database\Query;
+
 class DiagnosisController extends BaseController
 {
     public function index()
@@ -54,13 +56,15 @@ class DiagnosisController extends BaseController
         // Proses Perhitungan Metode Naïve Bayes
         // 1) Menentukan nilai N, 𝑚, 𝑥, 𝑛𝑐 setiap class dan 𝑃(𝑣𝑗)
 
+        $db = \Config\Database::connect();
+
         $total_gejala = $db->table('gejala')->countAll(); // Total Gejala
         $total_kerusakan = $db->table('kerusakan')->countAll(); // Total Kerusakan
 
         $N = 1; // jumlah record pada data di setiap kelas
-        $m = 41; // Total Gejala
-        $x = 22; // Total Kerusakan
-        $nc = $kode_gejala; // jumlah record pada data di setiap kelas
+        $m = $total_gejala; // Total Gejala
+        $x = $total_kerusakan; // Total Kerusakan
+        $nc = 2; // jumlah record pada data di setiap kelas
 
         $probabilitas = 1/$x; // contoh 1/22 = 0.045
 
@@ -68,18 +72,20 @@ class DiagnosisController extends BaseController
 
         $prob_jenis_kerusakan = ($nc + $m * $probabilitas) / ($N + $m); // contoh (0 + 41 * 0.045)/(1 + 41) = 0.0439 (4 angka belakang koma)
 
-        $angka_bulat = round($prob_jenis_kerusakan, 4); // Membulatkan prob menjadi 4 prob dibelakang koma
+        $prob_bulat = round($prob_jenis_kerusakan, 4); // Membulatkan prob menjadi 4 prob dibelakang koma
         $prob_format = number_format($prob_bulat, 4); // Format prob dengan 4 prob dibelakang koma
 
         // 3) Menghitung 𝑃(𝑎𝑖|𝑣𝑗) 𝑥 𝑃(𝑣𝑗) untuk tiap 𝑣.
 
         $prob_jenis_kerusakan = $prob_jenis_kerusakan * $prob_format; // contoh 0.0439 * 0.0439 * 0.0439 = 0.00000380720 (11 angka belakang koma)
         
+        $cf_gejala = 0.6 + 0.75 * (1 - 0.6); // contoh bobot gejala 1 = 0.6, bobot gejala 2 = 0.75, dan bobot gejala 3 = 0.25
+        
         $cf_gejala += $cf_gejala * (1 - $cf_gejala); // contoh 0.6 + 0.75 ∗ (1 − 0.6) = 0.6 + 0.75 ∗ 0.4 = 0.6 + 0.3 = 0.9
 
         $persentase = $cf_gejala * 100; // contoh 0.925 * 100 = 92.5%
 
-        return view('diagnosis/hasil', ['gejalas' => $gejalas, 'kerusakans' => $kerusakans, 'rules' => $rules, 'solusis' => $solusis, 'riwayats' => $riwayats, 'cfPenggunas' => $cfPenggunas, 'cfPakars' => $cfPakars]);
+        return view('hasil', ['gejalas' => $gejalas, 'kerusakans' => $kerusakans, 'rules' => $rules, 'solusis' => $solusis, 'riwayats' => $riwayats, 'cfPenggunas' => $cfPenggunas, 'cfPakars' => $cfPakars, 'persentase' => $persentase, 'total_gejala' => $total_gejala, 'total_kerusakan' => $total_kerusakan]);
     }
 }
 
