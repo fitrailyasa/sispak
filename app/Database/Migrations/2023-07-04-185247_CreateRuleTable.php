@@ -25,7 +25,10 @@ class CreateRuleTable extends Migration
             'kode_kerusakan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255
-            ]
+            ],
+            'bobot_pakar' => [
+                'type' => 'FLOAT'
+            ],
         ]);
 
         $this->forge->addKey('id', true);

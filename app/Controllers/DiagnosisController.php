@@ -32,34 +32,27 @@ class DiagnosisController extends BaseController
 
         // Gejala
         $gejalaModel = new GejalaModel();
-        $gejalas = $gejalaModel->findAll();
-
-        // var_dump($gejalas);
-        // exit();
+        $gejalas = $gejalaModel->find();
+        
+        // CF Pengguna
+        $cfPenggunaModel = new CFPenggunaModel();
+        $cfPenggunas = $cfPenggunaModel->find();
 
         // Kerusakan
         $kerusakanModel = new KerusakanModel();
-        $kerusakans = $kerusakanModel->findAll();
+        $kerusakans = $kerusakanModel->select('kode_kerusakan, nama_kerusakan')->where('kode_kerusakan', 'K2')->first();
+
+        // Solusi
+        $solusiModel = new SolusiModel();
+        $solusis = $solusiModel->where('kode_kerusakan', $kerusakans['kode_kerusakan'])->findAll();
 
         // Rule
         $ruleModel = new RuleModel();
         $rules = $ruleModel->findAll();
 
-        // Solusi
-        $solusiModel = new SolusiModel();
-        $solusis = $solusiModel->findAll();
-
         // Riwayat
         $riwayatModel = new RiwayatModel();
         $riwayats = $riwayatModel->findAll();
-
-        // CF Pengguna
-        $cfPenggunaModel = new CFPenggunaModel();
-        $cfPenggunas = $cfPenggunaModel->findAll();
-
-        // CF Pakar
-        $cfPakarModel = new CFPakarModel();
-        $cfPakars = $cfPakarModel->findAll();
 
         // Proses Perhitungan Metode Naïve Bayes
         // 1) Menentukan nilai N, 𝑚, 𝑥, 𝑛𝑐 setiap class dan 𝑃(𝑣𝑗)
@@ -92,6 +85,6 @@ class DiagnosisController extends BaseController
 
         $persentase = $cf_gejala * 100; // contoh 0.925 * 100 = 92.5%
 
-        return view('hasil', ['gejalas' => $gejalas, 'kerusakans' => $kerusakans, 'rules' => $rules, 'solusis' => $solusis, 'riwayats' => $riwayats, 'cfPenggunas' => $cfPenggunas, 'cfPakars' => $cfPakars, 'persentase' => $persentase, 'total_gejala' => $total_gejala, 'total_kerusakan' => $total_kerusakan]);
+        return view('hasil', ['gejalas' => $gejalas, 'kerusakans' => $kerusakans, 'rules' => $rules, 'solusis' => $solusis, 'riwayats' => $riwayats, 'cfPenggunas' => $cfPenggunas, 'persentase' => $persentase, 'total_gejala' => $total_gejala, 'total_kerusakan' => $total_kerusakan]);
     }
 }
