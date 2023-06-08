@@ -31,9 +31,7 @@ Hasil Diagnosa
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Gejala Kerusakan</b></h4>
                     <ol>
-                        <?php foreach ($gejalas as $gejala) : ?>
-                            <li><?= $gejala['nama_gejala'] ?></li>
-                        <?php endforeach; ?>
+                        <li><?= $gejalas['nama_gejala'] ?></li>
                     </ol>
                 </div>
             </div>
@@ -42,7 +40,7 @@ Hasil Diagnosa
         <div class="m-2">
             <div class="d-flex text-justify">
                 <div class="d-flex mx-4 px-4 flex-column">
-                    <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada <?= $kerusakans['nama_kerusakan'] ?> (<?= $kerusakans['kode_kerusakan'] ?>). Gejala yang Anda sebutkan, seperti <?= $gejalas[0]['nama_gejala'] ?>, menunjukkan bahwa masalah terletak pada <?= $kerusakans['nama_kerusakan'] ?> komputer.</small></h4>
+                    <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada <?= $kerusakans['nama_kerusakan'] ?> (<?= $kerusakans['kode_kerusakan'] ?>). Gejala yang Anda sebutkan, seperti <?= $gejalas['nama_gejala'] ?>, menunjukkan bahwa masalah terletak pada <?= $kerusakans['nama_kerusakan'] ?> komputer.</small></h4>
                 </div>
             </div>
         </div>
