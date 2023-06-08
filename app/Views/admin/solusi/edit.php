@@ -16,7 +16,7 @@ Edit Solusi
         <div class="card-body">
             <div class="form-group">
                 <label for="kode_kerusakan">ID Kerusakan</label>
-                <input type="text" class="form-control" id="kode_kerusakan" value="<?= $solusi['kode_kerusakan']; ?>" readonly>
+                <input type="text" class="form-control" id="kode_kerusakan" value="<?= $solusi['kode_kerusakan']; ?>" readonly name="kode_kerusakan">
             </div>
             <div class="form-group">
                 <label for="nama_solusi">Nama Solusi</label>
@@ -28,8 +28,8 @@ Edit Solusi
                 <?php endif ?>
             </div>
             <div class="form-group">
-                <label for="kode_kerusakan">ID Kerusakan</label>
-                <input type="text" class="form-control" id="kode_kerusakan" value="<?= $solusi['kode_kerusakan']; ?>" enabled>
+                <label for="kode_kerusakan">ID Kerusakan Baru</label>
+                <input type="text" class="form-control" id="kode_kerusakan" name="kode_kerusakan">
             </div>
         </div>
         <!-- /.card-body -->

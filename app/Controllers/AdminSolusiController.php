@@ -90,8 +90,11 @@ class AdminSolusiController extends BaseController
             ]
         ];
 
-        if (!$this->validate($validationRules, $validationMessages)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+        $validation = \Config\Services::validation();
+        $validation->setRules($validationRules, $validationMessages);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('validation', $validation);
         }
 
         $data = [
@@ -104,14 +107,14 @@ class AdminSolusiController extends BaseController
         $solusi = $solusiModel->find($id);
 
         if (!$solusi) {
-            return redirect()->back()->with('error', 'solusi not found.');
+            return redirect()->back()->with('error', 'Solusi not found.');
         }
 
-        $solusi->fill($data);
-        $solusi->save();
+        $solusiModel->update($id, $data);
 
-        return redirect()->to('/solusi');
+        return redirect()->to('/solusi')->with('success', 'Solusi updated successfully.');
     }
+
 
     public function destroy($id)
     {

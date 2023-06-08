@@ -78,7 +78,7 @@ class AdminGejalaController extends BaseController
     public function update($id)
     {
         $validationRules = [
-            'kode_gejala' => "required|is_unique[gejala.kode_gejala,id_gejala,$id]",
+            'kode_gejala' => "required|is_unique[gejala.kode_gejala,kode_gejala,$id]",
             'nama_gejala' => 'required'
         ];
 
@@ -92,8 +92,11 @@ class AdminGejalaController extends BaseController
             ]
         ];
 
-        if (!$this->validate($validationRules, $validationMessages)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+        $validation = \Config\Services::validation();
+        $validation->setRules($validationRules, $validationMessages);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('validation', $validation);
         }
 
         $data = [
@@ -111,8 +114,9 @@ class AdminGejalaController extends BaseController
 
         $gejalaModel->update($id, $data);
 
-        return redirect()->to('/gejala');
+        return redirect()->to('/gejala')->with('success', 'Gejala updated successfully.');
     }
+
 
     public function destroy($id)
     {

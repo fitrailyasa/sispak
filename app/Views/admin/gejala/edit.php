@@ -16,7 +16,7 @@ Edit Gejala
         <div class="card-body">
             <div class="form-group">
                 <label for="kode_gejala">Kode Gejala</label>
-                <input type="text" class="form-control" id="kode_gejala" value="<?= $gejala['kode_gejala']; ?>" readonly>
+                <input type="text" class="form-control" id="kode_gejala" value="<?= $gejala['kode_gejala']; ?>" readonly name="kode_gejala">
             </div>
             <div class="form-group">
                 <label for="nama_gejala">Nama Gejala</label>

@@ -16,14 +16,14 @@ Edit Kerusakan
         <div class="card-body">
             <div class="form-group">
                 <label for="kode_kerusakan">Kode Kerusakan</label>
-                <input type="text" class="form-control" id="kode_kerusakan" value="<?= $kerusakan['kode_kerusakan']; ?>" readonly>
+                <input type="text" class="form-control" id="kode_kerusakan" value="<?= $kerusakan['kode_kerusakan']; ?>" readonly name="kode_kerusakan">
             </div>
             <div class="form-group">
                 <label for="nama_kerusakan">Nama Kerusakan</label>
-                <input type="text" class="form-control <?= session('errors.nama_kerusakan') ? 'is-invalid' : ''; ?>" id="nama_kerusakan" value="<?= old('nama_kerusakan') ?: $kerusakan['nama_kerusakan']; ?>" name="nama_kerusakan" required autofocus>
-                <?php if (session('errors.nama_kerusakan')) : ?>
+                <input type="text" class="form-control <?= session('error.nama_kerusakan') ? 'is-invalid' : ''; ?>" id="nama_kerusakan" value="<?= old('nama_kerusakan') ?: $kerusakan['nama_kerusakan']; ?>" name="nama_kerusakan" required autofocus>
+                <?php if (session('error.nama_kerusakan')) : ?>
                     <span class="invalid-feedback" role="alert">
-                        <strong><?= session('errors.nama_kerusakan') ?></strong>
+                        <strong><?= session('error.nama_kerusakan') ?></strong>
                     </span>
                 <?php endif ?>
             </div>
