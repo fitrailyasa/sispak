@@ -11,7 +11,7 @@ Edit Gejala
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form method="POST" action="<?= route_to('gejala/update', $gejala['id']); ?>">
+    <form method="POST" action="<?= route_to('gejala/update', $gejala['kode_gejala']); ?>">
         <?= csrf_field() ?>
         <div class="card-body">
             <div class="form-group">

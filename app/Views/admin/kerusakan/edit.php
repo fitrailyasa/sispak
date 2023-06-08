@@ -11,7 +11,7 @@ Edit Kerusakan
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form method="POST" action="<?= route_to('kerusakan/update', $kerusakan['id']); ?>">
+    <form method="POST" action="<?= route_to('kerusakan/update', $kerusakan['kode_kerusakan']); ?>">
         <?= csrf_field() ?>
         <div class="card-body">
             <div class="form-group">

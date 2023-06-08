@@ -11,7 +11,7 @@ Edit Solusi
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form method="POST" action="<?= route_to('solusi/update', $solusi['id']); ?>">
+    <form method="POST" action="<?= route_to('solusi/update', $solusi['kode_solusi']); ?>">
         <?= csrf_field() ?>
         <div class="card-body">
             <div class="form-group">
