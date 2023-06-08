@@ -17,11 +17,9 @@ Diagnosa
             <?php $i = 1;
             foreach ($gejalas as $gejala) : ?>
                 <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label><br>
-                <p><input type="radio" name="bobot<?= $gejala['kode_gejala'] ?>" value="0"> Tidak Ada</p>
-                <p><input type="radio" name="bobot<?= $gejala['kode_gejala'] ?>" value="0.25"> Jarang</p>
-                <p><input type="radio" name="bobot<?= $gejala['kode_gejala'] ?>" value="0.5"> Cukup Sering</p>
-                <p><input type="radio" name="bobot<?= $gejala['kode_gejala'] ?>" value="0.75"> Sering</p>
-                <p><input type="radio" name="bobot<?= $gejala['kode_gejala'] ?>" value="1"> Sangat Sering</p>
+                <?php foreach ($cfPenggunas as $cf_pengguna) : ?>
+                    <p><input type="radio" name="bobot<?= $gejala['kode_gejala'] ?>" value="<?= $cf_pengguna['bobot_pengguna'] ?>"><?= $cf_pengguna['certainty_term'] ?></p>
+                <?php endforeach; ?>
                 <br>
             <?php endforeach; ?>
 

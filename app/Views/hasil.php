@@ -15,11 +15,8 @@ Hasil Diagnosa
             <div class="d-flex justify-content-between">
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Jenis Kerusakan</b></h4>
-                    <?php $i = 1; foreach ($kerusakans as $kerusakan) : ?>
-                        <?php if ($i < 2) : ?>
-                            <li><?= $kerusakan['nama_kerusakan'] ?></li>
-                        <?php endif; ?>
-                        <?php $i++; ?>
+                    <?php foreach ($kerusakans as $kerusakan) : ?>
+                        <li><?= $kerusakan['nama_kerusakan'] ?></li>
                     <?php endforeach; ?>
                 </div>
                 <div class="d-flex mx-4 px-4 flex-column">
@@ -34,12 +31,9 @@ Hasil Diagnosa
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Gejala Kerusakan</b></h4>
                     <ol>
-                    <?php $i = 1; foreach ($gejalas as $gejala) : ?>
-                        <?php if ($i < 5) : ?>
+                        <?php foreach ($gejalas as $gejala) : ?>
                             <li><?= $gejala['nama_gejala'] ?></li>
-                        <?php endif; ?>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </ol>
                 </div>
             </div>
@@ -48,25 +42,7 @@ Hasil Diagnosa
         <div class="m-2">
             <div class="d-flex text-justify">
                 <div class="d-flex mx-4 px-4 flex-column">
-                    <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada 
-                        <?php $i = 1; foreach ($kerusakans as $kerusakan) : ?>
-                            <?php if ($i < 2) : ?>
-                                <?= $kerusakan['nama_kerusakan'] ?> (<?= $kerusakan['kode_kerusakan'] ?>)
-                            <?php endif; ?>
-                            <?php $i++; ?>
-                        <?php endforeach; ?>. Gejala yang Anda sebutkan, seperti 
-                        <?php $i = 1; foreach ($gejalas as $gejala) : ?>
-                            <?php if ($i <= 2) : ?>
-                                <?= $gejala['nama_gejala'] ?>,
-                            <?php endif; ?><?php $i++; ?>
-                        <?php endforeach; ?> 
-                        menunjukkan bahwa masalah terletak pada 
-                        <?php $i = 1; foreach ($kerusakans as $kerusakan) : ?>
-                            <?php if ($i < 2) : ?>
-                                <?= $kerusakan['nama_kerusakan'] ?>
-                            <?php endif; ?>
-                            <?php $i++; ?>
-                        <?php endforeach; ?> komputer.</small></h4>
+                    <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada <?= $kerusakans[0]['nama_kerusakan'] ?> (<?= $kerusakans[0]['kode_kerusakan'] ?>). Gejala yang Anda sebutkan, seperti <?= $gejalas[0]['nama_gejala'] ?>, menunjukkan bahwa masalah terletak pada <?= $kerusakans[0]['nama_kerusakan'] ?> komputer.</small></h4>
                 </div>
             </div>
         </div>
@@ -76,12 +52,9 @@ Hasil Diagnosa
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Solusi:</b></h4>
                     <ol>
-                    <?php $i = 1; foreach ($solusis as $solusi) : ?>
-                        <?php if ($i < 5) : ?>
+                        <?php foreach ($solusis as $solusi) : ?>
                             <li><?= $solusi['nama_solusi'] ?></li>
-                        <?php endif; ?>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </ol>
                 </div>
             </div>
