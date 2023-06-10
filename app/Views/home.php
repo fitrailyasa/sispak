@@ -27,7 +27,7 @@ Beranda
         </li>
     </ol>
 </div>
-<div class="text-center">
+<div class="text-center mb-3">
     <a class="btn btn-dark text" href="/diagnosis">Mulai</a>
 </div>
 <?= $this->endSection() ?>

@@ -21,10 +21,13 @@ Diagnosa
         <input type="hidden" name="kode_kerusakan" value="K1">
         <?php $i = 1; foreach ($gejalas as $gejala) : ?>
             <div class="card p-3">
-                <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label><br>
-                <?php foreach ($cfPenggunas as $cf_pengguna) : ?>
-                    <p><input type="radio" name="<?= $gejala['kode_gejala'] ?>" value="<?= $cf_pengguna['bobot_pengguna'] ?>"><?= $cf_pengguna['certainty_term'] ?></p>
-                <?php endforeach; ?>
+                <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected name="<?= $gejala['kode_gejala'] ?>" value="0">Pilih</option>
+                    <?php foreach ($cfPenggunas as $cf_pengguna) : ?>
+                    <option name="<?= $gejala['kode_gejala'] ?>" value="<?= $cf_pengguna['bobot_pengguna'] ?>"><?= $cf_pengguna['certainty_term'] ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <?php endforeach; ?>     
             <input type="submit" class="btn btn-dark" value="Submit">
@@ -32,3 +35,9 @@ Diagnosa
     </div>
 </div>
 <?= $this->endSection() ?>
+
+
+<!-- <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label><br>
+<?php foreach ($cfPenggunas as $cf_pengguna) : ?>
+    <p><input type="radio" name="<?= $gejala['kode_gejala'] ?>" value="<?= $cf_pengguna['bobot_pengguna'] ?>"><?= $cf_pengguna['certainty_term'] ?></p>
+<?php endforeach; ?> -->
