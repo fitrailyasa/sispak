@@ -15,18 +15,18 @@ Diagnosa
     <div class="card-body p-4 mx-4">
         <form action="<?= route_to('diagnosis/hasil') ?>" method="POST">
         <label for="merk_laptop">Merk Laptop : </label>
-        <input type="text" name="merk_laptop"> <br>
+        <input class="form-control" type="text" name="merk_laptop" value="<?= old('merk_laptop'); ?>" placeholder="merk laptop anda (wajib)"> <br>
         <label for="tipe_laptop">Tipe Laptop : </label>
+        <input class="form-control" type="text" name="tipe_laptop" value="<?= old('tipe_laptop'); ?>" placeholder="tipe laptop anda (wajib)"> <br>
         <input type="hidden" name="kode_kerusakan" value="K1">
-        <input type="text" name="tipe_laptop"> <br>
-            <!-- <?php $i = 1; foreach ($gejalas as $gejala) : ?>
+        <?php $i = 1; foreach ($gejalas as $gejala) : ?>
+            <div class="card p-3">
                 <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label><br>
                 <?php foreach ($cfPenggunas as $cf_pengguna) : ?>
                     <p><input type="radio" name="<?= $gejala['kode_gejala'] ?>" value="<?= $cf_pengguna['bobot_pengguna'] ?>"><?= $cf_pengguna['certainty_term'] ?></p>
                 <?php endforeach; ?>
-                <br>
-            <?php endforeach; ?> -->
-
+            </div>
+            <?php endforeach; ?>     
             <input type="submit" class="btn btn-dark" value="Submit">
         </form>
     </div>
