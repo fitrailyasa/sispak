@@ -12,8 +12,8 @@ class DatabaseSeeder extends Seeder
         $this->call('GejalaSeeder');
         $this->call('KerusakanSeeder');
         $this->call('SolusiSeeder');
-        $this->call('RiwayatSeeder');
         $this->call('RuleSeeder');
         $this->call('CFPenggunaSeeder');
+        // $this->call('RiwayatSeeder');
     }
 }

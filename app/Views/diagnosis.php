@@ -14,8 +14,12 @@ Diagnosa
     </div>
     <div class="card-body p-4 mx-4">
         <form action="<?= route_to('diagnosis/hasil') ?>" method="POST">
-            <?php $i = 1;
-            foreach ($gejalas as $gejala) : ?>
+        <label for="merk_laptop">Merk Laptop : </label>
+        <input type="text" name="merk_laptop"> <br>
+        <label for="tipe_laptop">Tipe Laptop : </label>
+        <input type="hidden" name="kode_kerusakan" value="K1">
+        <input type="text" name="tipe_laptop"> <br>
+            <?php $i = 1; foreach ($gejalas as $gejala) : ?>
                 <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label><br>
                 <?php foreach ($cfPenggunas as $cf_pengguna) : ?>
                     <p><input type="radio" name="bobot<?= $gejala['kode_gejala'] ?>" value="<?= $cf_pengguna['bobot_pengguna'] ?>"><?= $cf_pengguna['certainty_term'] ?></p>

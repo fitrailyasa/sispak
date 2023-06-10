@@ -1,4 +1,5 @@
 <?= $this->extend('layouts/app') ?>
+
 <?= $this->section('title') ?>
 Hasil Diagnosa
 <?= $this->endSection() ?>
@@ -10,13 +11,15 @@ Hasil Diagnosa
     </div>
     <div class="card-body">
         <div class="text-center mb-3">
-            <h3 class="mb-3">Berdasarkan gejala terpilih, berikut hasil analisis kerusakan laptop anda</h3>
+            <h3 class="mb-3">Berdasarkan gejala terpilih, berikut hasil analisis kerusakan laptop anda dengan merk <?= $merk_laptop ?>, tipe <?= $tipe_laptop ?></h3>
             <hr>
             <div class="d-flex justify-content-between">
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Jenis Kerusakan</b></h4>
                     <ul>
-                        <li><?= $kerusakans['nama_kerusakan'] ?></li>
+                        <?php foreach ($kerusakans as $kerusakan) : ?>
+                        <li><?= $kerusakan['nama_kerusakan'] ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="d-flex mx-4 px-4 flex-column">
@@ -40,7 +43,7 @@ Hasil Diagnosa
         <div class="m-2">
             <div class="d-flex text-justify">
                 <div class="d-flex mx-4 px-4 flex-column">
-                    <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada <?= $kerusakans['nama_kerusakan'] ?> (<?= $kerusakans['kode_kerusakan'] ?>). Gejala yang Anda sebutkan, seperti <?= $gejalas['nama_gejala'] ?>, menunjukkan bahwa masalah terletak pada <?= $kerusakans['nama_kerusakan'] ?> komputer.</small></h4>
+                    <h4><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada <?= $kerusakans[0]['nama_kerusakan'] ?> (<?= $kerusakans[0]['kode_kerusakan'] ?>). Gejala yang Anda sebutkan, seperti <?= $gejalas['nama_gejala'] ?>, menunjukkan bahwa masalah terletak pada <?= $kerusakans[0]['nama_kerusakan'] ?> komputer.</small></h4>
                 </div>
             </div>
         </div>
@@ -50,7 +53,7 @@ Hasil Diagnosa
                 <div class="d-flex mx-4 px-4 flex-column">
                     <h4><b>Solusi:</b></h4>
                     <ol>
-                        <?php foreach ($solusis as $solusi) : ?>
+                        <?php foreach ($solusis[0] as $solusi) : ?>
                             <li><?= $solusi['nama_solusi'] ?></li>
                         <?php endforeach; ?>
                     </ol>
