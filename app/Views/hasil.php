@@ -6,8 +6,8 @@ Hasil Diagnosa
 
 <?= $this->section('content') ?>
 <div class="card">
-    <div class="card-header bg-gray">
-        <h4><a class="text-white pr-3" href="<?= route_to('diagnosis') ?>"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>Hasil Diagnosis</h4>
+    <div class="card-header bg-gray pt-3 px-4">
+        <h4 class="mx-4"><a class="text-white pr-3" href="<?= route_to('diagnosis') ?>"><i class="fa fa-arrow-left fa-sm" aria-hidden="true"></i></a>Hasil Diagnosis</h4>
     </div>
     <div class="card-body">
         <div class="m-2">

@@ -9,8 +9,8 @@ Diagnosa
     <h4>Solusi cepat mengetahui kerusakan laptop anda!</h4>
 </div>
 <div class="card">
-    <div class="card-header bg-gray p-4">
-        <h3 class="mx-4">Daftar Gejala</h3>
+    <div class="card-header bg-gray pt-4 px-4">
+        <h3 class="mx-4"><a class="text-white pr-3" href="<?= route_to('/') ?>"><i class="fa fa-arrow-left fa-sm" aria-hidden="true"></i></a>Daftar Gejala</h3>
     </div>
     <div class="card-body p-4 mx-4">
         <form action="<?= route_to('diagnosis/hasil') ?>" method="POST">
