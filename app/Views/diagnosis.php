@@ -19,13 +19,13 @@ Diagnosa
         <label for="tipe_laptop">Tipe Laptop : </label>
         <input type="hidden" name="kode_kerusakan" value="K1">
         <input type="text" name="tipe_laptop"> <br>
-            <?php $i = 1; foreach ($gejalas as $gejala) : ?>
+            <!-- <?php $i = 1; foreach ($gejalas as $gejala) : ?>
                 <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label><br>
                 <?php foreach ($cfPenggunas as $cf_pengguna) : ?>
-                    <p><input type="radio" name="bobot<?= $gejala['kode_gejala'] ?>" value="<?= $cf_pengguna['bobot_pengguna'] ?>"><?= $cf_pengguna['certainty_term'] ?></p>
+                    <p><input type="radio" name="<?= $gejala['kode_gejala'] ?>" value="<?= $cf_pengguna['bobot_pengguna'] ?>"><?= $cf_pengguna['certainty_term'] ?></p>
                 <?php endforeach; ?>
                 <br>
-            <?php endforeach; ?>
+            <?php endforeach; ?> -->
 
             <input type="submit" class="btn btn-dark" value="Submit">
         </form>

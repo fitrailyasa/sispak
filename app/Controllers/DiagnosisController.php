@@ -31,7 +31,7 @@ class DiagnosisController extends BaseController
     {
         // Gejala
         $gejalaModel = new GejalaModel();
-        $gejalas = $gejalaModel->where('kode_gejala', 'G1')->first();
+        $gejalas = $gejalaModel->where('kode_gejala', 'G5')->first();
 
         // CF Pengguna
         $cfPenggunaModel = new CFPenggunaModel();
@@ -73,6 +73,9 @@ class DiagnosisController extends BaseController
         $m = $gejalaModel->countAll(); // Total gejala
         $x = $kerusakanModel->countAll(); // Total kerusakan
         $nc = count($cfPenggunas); // Total gejala yang dipilih
+        
+        // var_dump($nc);
+        // exit();
 
         $probabilitas = 1/$x;
         $prob_bulat = round($probabilitas, 3);
