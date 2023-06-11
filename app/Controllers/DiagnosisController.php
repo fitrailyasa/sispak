@@ -50,13 +50,14 @@ class DiagnosisController extends BaseController
             $kodeGejala = $this->request->getPost('kode_gejala_' . $i);
             $bobotPengguna = $this->request->getPost('bobot_pengguna_' . $i);
 
+            $gejalas = $gejalaModel->find($kodeGejala); // Mengambil data gejala berdasarkan kode gejala
+
             // Menambahkan data CF pengguna ke dalam array
             $cfPenggunas[] = [
                 'kode_gejala' => $kodeGejala,
                 'bobot_pengguna' => $bobotPengguna,
             ];
         }
-
         
         // Proses Perhitungan Metode Naïve Bayes
         // 1) Menentukan nilai N, 𝑚, 𝑥, 𝑛𝑐 setiap class dan 𝑃(𝑣𝑗)
@@ -114,47 +115,46 @@ class DiagnosisController extends BaseController
             }
         }
 
-        var_dump($persentase);
-        var_dump($kerusakans);
-        exit();
+        // var_dump($persentase);
+        // var_dump($kerusakans);
+        // exit();
 
-        // // Riwayat
-        // $validationRules = [
-            //     'kode_kerusakan' => 'required',
-            //     'merk_laptop' => 'required',
-            //     'tipe_laptop' => 'required'
-            // ];
+        // Riwayat
+        $validationRules = [
+                'kode_kerusakan' => 'required',
+                'merk_laptop' => 'required',
+                'tipe_laptop' => 'required'
+            ];
             
-            // $validationMessages = [
-                //     'kode_kerusakan' => [
-                    //         'required' => 'kode kerusakan harus diisi.',
-                    //     ],
-                    //     'merk_laptop' => [
-                        //         'required' => 'merk laptop harus diisi.',
-                        //     ],
-                        //     'tipe_laptop' => [
-                            //         'required' => 'tipe laptop harus diisi.',
-                            //     ]
-                            // ];
+            $validationMessages = [
+                    'kode_kerusakan' => [
+                            'required' => 'kode kerusakan harus diisi.',
+                        ],
+                        'merk_laptop' => [
+                                'required' => 'merk laptop harus diisi.',
+                            ],
+                            'tipe_laptop' => [
+                                    'required' => 'tipe laptop harus diisi.',
+                                ]
+                            ];
                             
-                            // if (!$this->validate($validationRules, $validationMessages)) {
-                                //     return redirect()->back()->withInput()->with('validation', $this->validator);
-                                // }
+                            if (!$this->validate($validationRules, $validationMessages)) {
+                                    return redirect()->back()->withInput()->with('validation', $this->validator);
+                                }
                                 
-        // $data = [
-        //     'token' => $this->request->getPost('kode_kerusakan') . date('YmdHis'),
-        //     'kode_kerusakan' => $this->request->getPost('kode_kerusakan'),
-        //     'merk_laptop' => $this->request->getPost('merk_laptop'),
-        //     'tipe_laptop' => $this->request->getPost('tipe_laptop'),
-        //     'created_at' => date('Y-m-d H:i:s')
-        // ];
+        $data = [
+            'token' => $this->request->getPost('kode_kerusakan') . date('YmdHis'),
+            'kode_kerusakan' => $this->request->getPost('kode_kerusakan'),
+            'merk_laptop' => $this->request->getPost('merk_laptop'),
+            'tipe_laptop' => $this->request->getPost('tipe_laptop'),
+            'created_at' => date('Y-m-d H:i:s')
+        ];
         
-        // $riwayatModel = new RiwayatModel();
-        // $riwayatModel->insert($data);
+        $riwayatModel = new RiwayatModel();
+        $riwayatModel->insert($data);
         
         $merk_laptop = $this->request->getPost('merk_laptop');
         $tipe_laptop = $this->request->getPost('tipe_laptop');
-        
 
         return view('hasil', ['gejalas' => $gejalas, 'kerusakans' => $kerusakans, 'rules' => $rules, 'solusis' => $solusis, 'persentase' => $persentase, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop]);
     }
