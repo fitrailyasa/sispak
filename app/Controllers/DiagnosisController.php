@@ -69,25 +69,39 @@ class DiagnosisController extends BaseController
         
         $probabilitas = 1/$x;
         $prob_bulat = round($probabilitas, 3);
+
         
         // 2) Menghitung nilai 𝑃(𝑎𝑖|𝑣𝑗)
         
         $prob_jenis_kerusakan = []; // Inisialisasi variabel sebagai array kosong
-
+        
+        $i = 0;
+        
         foreach ($cfPenggunas as $cf_pengguna) {
+            $i++;
             $kodeGejala = $cf_pengguna['kode_gejala'];
             $bobotPengguna = $cf_pengguna['bobot_pengguna'];
-        
+            $bobotPakar = $ruleModel->where('kode_gejala', $kodeGejala)->first()['bobot_pakar'];
+            
             $prob_jenis_kerusakan[] = ($cf_pengguna['bobot_pengguna'] + $m * $probabilitas) / ($N + $m);
+
+            $cf_gejala = $bobotPengguna * $bobotPakar;
+            
+            // 3) Menghitung 𝑃(𝑎𝑖|𝑣𝑗) 𝑥 𝑃(𝑣𝑗) untuk tiap 𝑣.
+            
+            $cf_combine = $cf_gejala + $cf_gejala * (1 - $cf_gejala);
+            echo "cf combine ke-". $i .": ". $cf_gejala . " + ". $cf_gejala . " x (" . 1-$cf_gejala . ") = " . $cf_combine . " <br>";
+            $cf_combine += $cf_combine * (1 - $cf_combine); // contoh 0.6 + 0.75 ∗ (1 − 0.6) = 0.6 + 0.75 ∗ 0.4 = 0.6 + 0.3 = 0.9
+            $persentase = $cf_combine * 100; // contoh 0.925 * 100 = 92.5%
+            
+            // echo "Nilai persentase ke-". $i .": " . $persentase . "% <br>";
         }
         
-        $prob_jenis_bulat = round(array_product($prob_jenis_kerusakan), 4); // Menghitung hasil perkalian probabilitas dengan fungsi array_product()
-        
-        // 3) Menghitung 𝑃(𝑎𝑖|𝑣𝑗) 𝑥 𝑃(𝑣𝑗) untuk tiap 𝑣.
-        
-        $cf_gejala = 0.6 + 0.75 * (1 - 0.6); // contoh bobot gejala 1 = 0.6, bobot gejala 2 = 0.75, dan bobot gejala 3 = 0.25        
-        $cf_gejala += $cf_gejala * (1 - $cf_gejala); // contoh 0.6 + 0.75 ∗ (1 − 0.6) = 0.6 + 0.75 ∗ 0.4 = 0.6 + 0.3 = 0.9
-        $persentase = $cf_gejala * 100; // contoh 0.925 * 100 = 92.5%
+        $maxValue = max($prob_jenis_kerusakan);
+
+        echo "Nilai tertinggi: " . $maxValue;
+        // var_dump($persentase);
+        exit();
 
         $rules = [];
         foreach ($cfPenggunas as $cf_pengguna) {
