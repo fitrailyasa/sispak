@@ -17,14 +17,14 @@ Hasil Diagnosa
                 <div class="d-flex mx-4 flex-column">
                     <h5><b>Jenis Kerusakan</b></h5>
                     <ol>
-                        <?php foreach ($kerusakans as $kerusakan) : ?>
-                            <li><?= $kerusakan['nama_kerusakan'] ?></li>
+                        <?php foreach ($rules as $rule) : ?>
+                            <li><?= $rule['kode_kerusakan'] ?></li>
                         <?php endforeach; ?>
                     </ol>
                 </div>
                 <div class="d-flex mx-4 flex-column">
                     <h5><b>Tingkat Keyakinan</b></h5>
-                    <p class="text-center"><?= $persentase ?>%</p>
+                    <p class="text-center"><?= $maxValue ?>%</p>
                 </div>
             </div>
         </div>
@@ -33,7 +33,9 @@ Hasil Diagnosa
                 <div class="d-flex mx-4 flex-column">
                     <h5><b>Gejala Kerusakan</b></h5>
                     <ol>
-                        <li><?= $gejalas['nama_gejala'] ?></li>
+                        <?php foreach ($gejalas as $gejala) : ?>
+                            <li><?= $gejala['nama_gejala'] ?></li>
+                        <?php endforeach; ?>
                     </ol>
                 </div>
             </div>
@@ -41,7 +43,13 @@ Hasil Diagnosa
         <div class="m-2">
             <div class="d-flex text-justify">
                 <div class="d-flex mx-4 flex-column">
-                    <h5><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada <?= $kerusakans[0]['nama_kerusakan'] ?> (<?= $kerusakans[0]['kode_kerusakan'] ?>). Gejala yang Anda sebutkan, seperti <?= $gejalas['nama_gejala'] ?>, menunjukkan bahwa masalah terletak pada <?= $kerusakans[0]['nama_kerusakan'] ?> komputer.</small></h5>
+                    <h5><b>Penjelasan:</b><small> Berdasarkan gejala yang Anda berikan, sistem pakar mendiagnosis kerusakan pada <?php foreach ($rules as $rule) : ?>
+                            (<?= $rule['kode_kerusakan'] ?>)
+                        <?php endforeach; ?> . Gejala yang Anda sebutkan, seperti <?php foreach ($gejalas as $gejala) : ?>
+                            <?= $gejala['nama_gejala'] ?>,
+                        <?php endforeach; ?> menunjukkan bahwa masalah terletak pada <?php foreach ($rules as $rule) : ?>
+                            <?= $rule['kode_kerusakan'] ?>
+                        <?php endforeach; ?> komputer.</small></h5>
                 </div>
             </div>
         </div>

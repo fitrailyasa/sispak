@@ -42,21 +42,23 @@ class DiagnosisController extends BaseController
         $ruleModel = new RuleModel();
 
         $jumlahInput = $gejalaModel->countAll(); // Total gejala
-        
         $cfPenggunas = []; // Inisialisasi array untuk menyimpan data CF pengguna
+        $gejalas = []; // Inisialisasi array untuk menyimpan data gejala
 
         for ($i = 1; $i <= $jumlahInput; $i++) {
             // Menggunakan nomor iterasi sebagai bagian dari nama field input untuk membedakan inputan
             $kodeGejala = $this->request->getPost('kode_gejala_' . $i);
             $bobotPengguna = $this->request->getPost('bobot_pengguna_' . $i);
+            if ($bobotPengguna > 0) {
+                $gejala = $gejalaModel->find($kodeGejala); // Mengambil data gejala berdasarkan kode gejala
 
-            $gejalas = $gejalaModel->find($kodeGejala); // Mengambil data gejala berdasarkan kode gejala
-
-            // Menambahkan data CF pengguna ke dalam array
-            $cfPenggunas[] = [
-                'kode_gejala' => $kodeGejala,
-                'bobot_pengguna' => $bobotPengguna,
-            ];
+                // Menambahkan data CF pengguna ke dalam array
+                $cfPenggunas[] = [
+                    'kode_gejala' => $kodeGejala,
+                    'bobot_pengguna' => $bobotPengguna,
+                ];
+                $gejalas[] = $gejala; // Menyimpan data gejala dalam array
+            }
         }
         
         // Proses Perhitungan Metode Naïve Bayes
@@ -69,92 +71,73 @@ class DiagnosisController extends BaseController
         
         $probabilitas = 1/$x;
         $prob_bulat = round($probabilitas, 3);
-
         
         // 2) Menghitung nilai 𝑃(𝑎𝑖|𝑣𝑗)
         
         $prob_jenis_kerusakan = []; // Inisialisasi variabel sebagai array kosong
         
         $i = 0;
+        $satu = $i + 1;
         
         foreach ($cfPenggunas as $cf_pengguna) {
-            $i++;
             $kodeGejala = $cf_pengguna['kode_gejala'];
             $bobotPengguna = $cf_pengguna['bobot_pengguna'];
             $bobotPakar = $ruleModel->where('kode_gejala', $kodeGejala)->first()['bobot_pakar'];
             
             $prob_jenis_kerusakan[] = ($cf_pengguna['bobot_pengguna'] + $m * $probabilitas) / ($N + $m);
-
-            $cf_gejala = $bobotPengguna * $bobotPakar;
+            
+            $cf_gejala[] = $bobotPengguna * $bobotPakar;
             
             // 3) Menghitung 𝑃(𝑎𝑖|𝑣𝑗) 𝑥 𝑃(𝑣𝑗) untuk tiap 𝑣.
             
-            $cf_combine = $cf_gejala + $cf_gejala * (1 - $cf_gejala);
-            echo "cf combine ke-". $i .": ". $cf_gejala . " + ". $cf_gejala . " x (" . 1-$cf_gejala . ") = " . $cf_combine . " <br>";
-            $cf_combine += $cf_combine * (1 - $cf_combine); // contoh 0.6 + 0.75 ∗ (1 − 0.6) = 0.6 + 0.75 ∗ 0.4 = 0.6 + 0.3 = 0.9
-            $persentase = $cf_combine * 100; // contoh 0.925 * 100 = 92.5%
-            
-            // echo "Nilai persentase ke-". $i .": " . $persentase . "% <br>";
+            $cf_combine = $cf_gejala[$i] + $cf_gejala[$i] * (1 - $cf_gejala[$i]);
+            $persentase[] = $cf_combine * 100; // contoh 0.925 * 100 = 92.5%
+            $i++;
         }
         
-        $maxValue = max($prob_jenis_kerusakan);
-
-        echo "Nilai tertinggi: " . $maxValue;
-        // var_dump($persentase);
-        exit();
-
+        $maxValue = max($persentase);
+        $maxValueIndex = array_keys($persentase, max($persentase)); // Indeks dengan persentase terbesar
+        $maxValueIndex = $maxValueIndex[0]; 
+        
         $rules = [];
-        foreach ($cfPenggunas as $cf_pengguna) {
-            $kodeGejala = $cf_pengguna['kode_gejala'];
+        if (isset($cfPenggunas[$maxValueIndex])) {
+            $kodeGejala = $cfPenggunas[$maxValueIndex]['kode_gejala'];
             $rule = $ruleModel->where('kode_gejala', $kodeGejala)->findAll();
             $rules = array_merge($rules, $rule);
-        }
-
-        
-        $kerusakans = [];
-        foreach ($rules as $rule) {
-            $kerusakan = $kerusakanModel->find($rule['kode_kerusakan']);
-            if ($kerusakan) {
-                $kerusakans[] = $kerusakan;
-            }
         }
         
         // Solusi
         $solusiModel = new SolusiModel();
         $solusis = [];
-        foreach ($kerusakans as $kerusakan) {
-            $solusi = $solusiModel->where('kode_kerusakan', $kerusakan['kode_kerusakan'])->findAll();
+        foreach ($rules as $rule) {
+            $solusi = $solusiModel->where('kode_kerusakan', $rule['kode_kerusakan'])->findAll();
             if ($solusi) {
                 $solusis[] = $solusi;
             }
         }
-
-        // var_dump($persentase);
-        // var_dump($kerusakans);
-        // exit();
-
+        
         // Riwayat
         $validationRules = [
-                'kode_kerusakan' => 'required',
-                'merk_laptop' => 'required',
-                'tipe_laptop' => 'required'
-            ];
-            
-            $validationMessages = [
-                    'kode_kerusakan' => [
-                            'required' => 'kode kerusakan harus diisi.',
-                        ],
-                        'merk_laptop' => [
-                                'required' => 'merk laptop harus diisi.',
-                            ],
-                            'tipe_laptop' => [
-                                    'required' => 'tipe laptop harus diisi.',
-                                ]
-                            ];
-                            
-                            if (!$this->validate($validationRules, $validationMessages)) {
-                                    return redirect()->back()->withInput()->with('validation', $this->validator);
-                                }
+            'kode_kerusakan' => 'required',
+            'merk_laptop' => 'required',
+            'tipe_laptop' => 'required'
+        ];
+        
+        $validationMessages = [
+            'kode_kerusakan' => [
+                'required' => 'kode kerusakan harus diisi.',
+            ],
+            'merk_laptop' => [
+                'required' => 'merk laptop harus diisi.',
+            ],
+            'tipe_laptop' => [
+                'required' => 'tipe laptop harus diisi.',
+            ]
+        ];
+                        
+        if (!$this->validate($validationRules, $validationMessages)) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
+        }
                                 
         $data = [
             'token' => $this->request->getPost('kode_kerusakan') . date('YmdHis'),
@@ -163,13 +146,13 @@ class DiagnosisController extends BaseController
             'tipe_laptop' => $this->request->getPost('tipe_laptop'),
             'created_at' => date('Y-m-d H:i:s')
         ];
-        
+
         $riwayatModel = new RiwayatModel();
         $riwayatModel->insert($data);
         
         $merk_laptop = $this->request->getPost('merk_laptop');
         $tipe_laptop = $this->request->getPost('tipe_laptop');
 
-        return view('hasil', ['gejalas' => $gejalas, 'kerusakans' => $kerusakans, 'rules' => $rules, 'solusis' => $solusis, 'persentase' => $persentase, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop]);
+        return view('hasil', ['gejalas' => $gejalas, 'rules' => $rules, 'solusis' => $solusis, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop, 'maxValue' => $maxValue]);
     }
 }
