@@ -11,107 +11,107 @@ class SolusiSeeder extends Seeder
     {
         $solusiData = [
             [
-                'kode_kerusakan' => 'K1',
+                'kode_kerusakan' => 'K01',
                 'nama_solusi' => 'Solusi pertama bisa mematikan komputer dengan hard booting mati dan tekan beberapa detik untuk menghapus kapasitas pengisian dan kemudian hidupkan. Jika masih menunjukkan gejala kerusakan, maka bisa terjadi kerusakan hardware, periksa konektornya.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K1',
+                'kode_kerusakan' => 'K01',
                 'nama_solusi' => 'Solusi LCD buram untuk mengatasinya bisa dilakukan hanya dengan mengganti monitor tabung sinar katoda.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K1',
+                'kode_kerusakan' => 'K01',
                 'nama_solusi' => 'Untuk warna yang kurang lengkap bisa ganti mainboard atau ganti VGA kabel.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K2',
+                'kode_kerusakan' => 'K02',
                 'nama_solusi' => 'Coba bersihkan RAM menggunakan penghapus dengan menyikat kuningan di RAM.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K2',
+                'kode_kerusakan' => 'K02',
                 'nama_solusi' => 'Periksa RAM yang anda gunakan jika itu adalah jenis komputer yang anda gunakan.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K3',
+                'kode_kerusakan' => 'K03',
                 'nama_solusi' => 'Periksa hubungan hard drive dengan soket.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K3',
+                'kode_kerusakan' => 'K03',
                 'nama_solusi' => 'Periksa apakah harddisk berbunyi jika demikian kemungkinan ada sektor yang rusak, segera buat cadangan data anda sebelum hard drive mati total, dan siapkan harddisk baru.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K4',
+                'kode_kerusakan' => 'K04',
                 'nama_solusi' => 'Matikan komputer dan cabut kartu VGA, lalu pasang kembali hati-hati dan pastikan terpasang dengan benar.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K4',
+                'kode_kerusakan' => 'K04',
                 'nama_solusi' => 'Jika anda menggunakan kartu VGA On Board bentrok dengan motherboard, anda harus menonaktifkan fungsi On Board VGA BIOS.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K4',
+                'kode_kerusakan' => 'K04',
                 'nama_solusi' => 'Jika tidak bisa diperbaiki secara manual, sebaiknya segera bawa ke service center terdekat atau dengan mengganti motherboard.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K5',
+                'kode_kerusakan' => 'K05',
                 'nama_solusi' => 'Instal ulang driver sound card dan pastikan sound card terpasang dengan benar di dalam slot.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K5',
+                'kode_kerusakan' => 'K05',
                 'nama_solusi' => 'Pastikan konektor kabel terpasang dengan benar.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K5',
+                'kode_kerusakan' => 'K05',
                 'nama_solusi' => 'Jika ada kabel yang putus maka segera ganti kabel penghubung yang putus dengan yang baru.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K5',
+                'kode_kerusakan' => 'K05',
                 'nama_solusi' => 'Cara lain adalah dengan mengganti sound card atau speaker dengan yang baru.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K6',
+                'kode_kerusakan' => 'K06',
                 'nama_solusi' => 'Periksa apakah kabel harddisk sudah terpasang.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K6',
+                'kode_kerusakan' => 'K06',
                 'nama_solusi' => 'Apakah komputer bersih dari virus, jika tidak silahkan bersihkan virus atau instal ulang.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K6',
+                'kode_kerusakan' => 'K06',
                 'nama_solusi' => 'Periksa pengaturan bios di menu boot, apakah sudah sesuai untuk boot dari perangkat keras.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K7',
+                'kode_kerusakan' => 'K07',
                 'nama_solusi' => 'Tutup paksa aplikasi. Jika program menjadi tidak responsif, anda dapat menekan (dan menahan) tombol Ctrl dan Alt dan Delete (Control, Alt, dan Delete) pada keyboard anda untuk membuka Task Manager anda kemudian dapat memilih aplikasi yang tidak responsif dan klik Akhiri Tugas untuk mematikan secara paksa.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K7',
+                'kode_kerusakan' => 'K07',
                 'nama_solusi' => 'Instal ulang aplikasi yang salah.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K7',
+                'kode_kerusakan' => 'K07',
                 'nama_solusi' => 'Matikan anti-virus yang dilindungi jika aplikasi berguna sebagai debug.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K8',
+                'kode_kerusakan' => 'K08',
                 'nama_solusi' => 'Periksa apakah kabel sudah tersambung dengan benar dan pasang steker ke stopkontak.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K8',
+                'kode_kerusakan' => 'K08',
                 'nama_solusi' => 'Cek juga tombol on/off di belakang persis di belakang Power Supply apakah pada posisi On.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K8',
+                'kode_kerusakan' => 'K08',
                 'nama_solusi' => 'Jika sudah yakin terpasang dengan benar tapi tetap tidak ada respon, kemungkinan kabel / power supply sendiri rusak, ganti dengan kabel baru atau catu daya baru.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K9',
+                'kode_kerusakan' => 'K09',
                 'nama_solusi' => 'Buka prosesor dari slotnya, bersihkan prosesor dengan tissue dan biarkan pasta tetap dingin.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K9',
+                'kode_kerusakan' => 'K09',
                 'nama_solusi' => 'Cek slot pin pada motherboard apakah ada yang cacat, jika cacat harap dirapikan.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [
-                'kode_kerusakan' => 'K9',
+                'kode_kerusakan' => 'K09',
                 'nama_solusi' => 'Processor dan motherboard harus cocok, jika tidak cocok harus diganti.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
             [

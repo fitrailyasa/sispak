@@ -38,8 +38,6 @@ class CreateRiwayatTable extends Migration
 
         $this->forge->addKey('id', true);
 
-        $this->forge->addForeignKey('kode_kerusakan', 'kerusakan', 'kode_kerusakan', 'CASCADE', 'CASCADE');
-
         $this->forge->createTable('riwayat');
     }
 

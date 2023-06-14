@@ -14,7 +14,7 @@ class RiwayatSeeder extends Seeder
         $data = [
             [
                 'token' => 'ABC123',
-                'kode_kerusakan' => 'K1',
+                'kode_kerusakan' => 'K01',
                 'merk_laptop' => 'Acer',
                 'tipe_laptop' => 'Aspire',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -22,7 +22,7 @@ class RiwayatSeeder extends Seeder
             ],
             [
                 'token' => 'DEF456',
-                'kode_kerusakan' => 'K2',
+                'kode_kerusakan' => 'K02',
                 'merk_laptop' => 'Lenovo',
                 'tipe_laptop' => 'ThinkPad',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -30,7 +30,7 @@ class RiwayatSeeder extends Seeder
             ],
             [
                 'token' => 'GHI789',
-                'kode_kerusakan' => 'K3',
+                'kode_kerusakan' => 'K03',
                 'merk_laptop' => 'Dell',
                 'tipe_laptop' => 'Latitude',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -38,7 +38,7 @@ class RiwayatSeeder extends Seeder
             ],
             [
                 'token' => 'JKL012',
-                'kode_kerusakan' => 'K4',
+                'kode_kerusakan' => 'K04',
                 'merk_laptop' => 'HP',
                 'tipe_laptop' => 'Pavilion',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -46,7 +46,7 @@ class RiwayatSeeder extends Seeder
             ],
             [
                 'token' => 'MNO345',
-                'kode_kerusakan' => 'K5',
+                'kode_kerusakan' => 'K05',
                 'merk_laptop' => 'Asus',
                 'tipe_laptop' => 'ZenBook',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -54,7 +54,7 @@ class RiwayatSeeder extends Seeder
             ],
             [
                 'token' => 'PQR678',
-                'kode_kerusakan' => 'K1',
+                'kode_kerusakan' => 'K01',
                 'merk_laptop' => 'Acer',
                 'tipe_laptop' => 'Predator',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -62,7 +62,7 @@ class RiwayatSeeder extends Seeder
             ],
             [
                 'token' => 'STU901',
-                'kode_kerusakan' => 'K2',
+                'kode_kerusakan' => 'K02',
                 'merk_laptop' => 'Lenovo',
                 'tipe_laptop' => 'IdeaPad',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -70,7 +70,7 @@ class RiwayatSeeder extends Seeder
             ],
             [
                 'token' => 'VWX234',
-                'kode_kerusakan' => 'K3',
+                'kode_kerusakan' => 'K03',
                 'merk_laptop' => 'Dell',
                 'tipe_laptop' => 'XPS',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -78,7 +78,7 @@ class RiwayatSeeder extends Seeder
             ],
             [
                 'token' => 'YZA567',
-                'kode_kerusakan' => 'K4',
+                'kode_kerusakan' => 'K04',
                 'merk_laptop' => 'HP',
                 'tipe_laptop' => 'EliteBook',
                 'created_at' => date('Y-m-d H:i:s'),
