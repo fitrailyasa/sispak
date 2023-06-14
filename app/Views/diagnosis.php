@@ -23,7 +23,7 @@ Diagnosa
             <?php $i = 1; foreach ($gejalas as $gejala) : ?>
                 <div class="card p-3">
                     <input type="hidden" name="kode_gejala_<?= $i ?>" value="<?= $gejala['kode_gejala'] ?>">
-                    <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?></label>
+                    <label for="gejala"><?= $i++ ?>. <?= $gejala['nama_gejala'] ?> (<?= $gejala['kode_gejala'] ?>)</label>
                     <select class="form-select form-select-sm" name="bobot_pengguna_<?= $i-1 ?>" aria-label=".form-select-sm example">
                         <option selected value="0">Pilih</option>
                         <?php foreach ($cfPenggunas as $cf_pengguna) : ?>

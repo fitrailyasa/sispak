@@ -90,18 +90,18 @@ class SolusiSeeder extends Seeder
                 'kode_kerusakan' => 'K07',
                 'nama_solusi' => 'Matikan anti-virus yang dilindungi jika aplikasi berguna sebagai debug.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
             ],
-            [
-                'kode_kerusakan' => 'K08',
-                'nama_solusi' => 'Periksa apakah kabel sudah tersambung dengan benar dan pasang steker ke stopkontak.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
-            ],
-            [
-                'kode_kerusakan' => 'K08',
-                'nama_solusi' => 'Cek juga tombol on/off di belakang persis di belakang Power Supply apakah pada posisi On.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
-            ],
-            [
-                'kode_kerusakan' => 'K08',
-                'nama_solusi' => 'Jika sudah yakin terpasang dengan benar tapi tetap tidak ada respon, kemungkinan kabel / power supply sendiri rusak, ganti dengan kabel baru atau catu daya baru.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
-            ],
+            // [
+            //     'kode_kerusakan' => 'K08',
+            //     'nama_solusi' => 'Periksa apakah kabel sudah tersambung dengan benar dan pasang steker ke stopkontak.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
+            // ],
+            // [
+            //     'kode_kerusakan' => 'K08',
+            //     'nama_solusi' => 'Cek juga tombol on/off di belakang persis di belakang Power Supply apakah pada posisi On.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
+            // ],
+            // [
+            //     'kode_kerusakan' => 'K08',
+            //     'nama_solusi' => 'Jika sudah yakin terpasang dengan benar tapi tetap tidak ada respon, kemungkinan kabel / power supply sendiri rusak, ganti dengan kabel baru atau catu daya baru.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
+            // ],
             [
                 'kode_kerusakan' => 'K09',
                 'nama_solusi' => 'Buka prosesor dari slotnya, bersihkan prosesor dengan tissue dan biarkan pasta tetap dingin.', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'
