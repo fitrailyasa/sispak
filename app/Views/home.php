@@ -4,12 +4,12 @@ Beranda
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="card text-center p-3">
-    <img src="<?= base_url('assets/logo/favicon.png') ?>" width="100" alt="" style="display: block; margin: 0 auto;">
+<div class="card text-center mt-3 p-3">
+    <img src="<?= base_url('assets/logo/logo.png') ?>" width="100" alt="" style="display: block; margin: 0 auto;">
     <h1>Selamat Datang di Sistem Pakar <br> Diagnosa Kerusakan Laptop</h1>
     <h4>Solusi cepat mengetahui kerusakan laptop anda!</h4>
 </div>
-<div class="m-4">
+<div class="px-4">
     <h3>Cara Penggunaan</h3>
 </div>
 <div class="card p-3">
