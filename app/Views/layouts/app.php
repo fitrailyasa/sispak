@@ -47,6 +47,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets/favicon/favicon-32x32.png') ?>">
     <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('assets/favicon/favicon-96x96.png') ?>">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/favicon/favicon-16x16.png') ?>">
+    <link rel="icon" type="ico" sizes="16x16" href="<?= base_url('assets/favicon/favicon.ico') ?>">
     <link rel="manifest" href="<?= base_url('assets/favicon/manifest.json') ?>">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -64,23 +65,6 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars text-white"></i></a>
                 </li>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <div class="user-panel d-flex flex-col">
-                        <form id="logout-form" action="#" method="POST" hidden>
-                        </form>
-                        <a href="/login" class="nav-link text-white" onclick="">
-                            <i class="nav-icon fas fa-sign-in"></i>
-                            <span>
-                                Login Admin
-                            </span>
-                        </a>
-                    </div>
-                </li>
-
             </ul>
 
         </nav>

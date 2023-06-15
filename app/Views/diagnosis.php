@@ -15,11 +15,13 @@ Diagnosa
     </div>
     <div class="card-body p-4 mx-4">
         <form action="<?= route_to('diagnosis/hasil') ?>" method="POST">
+            <h4>Data Laptop</h4>
             <label for="merk_laptop">Merk Laptop :</label>
             <input class="form-control" type="text" name="merk_laptop" value="<?= old('merk_laptop'); ?>" placeholder="merk laptop anda (wajib)"><br>
             <label for="tipe_laptop">Tipe Laptop :</label>
             <input class="form-control" type="text" name="tipe_laptop" value="<?= old('tipe_laptop'); ?>" placeholder="tipe laptop anda (wajib)"><br>
             <input type="hidden" name="kode_kerusakan" value="K1">
+            <h5>Silahkan pilih gejala-gejala yang dirasakan oleh laptop beserta intensitasnya. Gejala lainnya dapat diabaikan apabila tidak dirasakan oleh laptop anda</h5>
             <?php $i = 1; foreach ($gejalas as $gejala) : ?>
                 <div class="card p-3">
                     <input type="hidden" name="kode_gejala_<?= $i ?>" value="<?= $gejala['kode_gejala'] ?>">
@@ -32,7 +34,7 @@ Diagnosa
                     </select>
                 </div>
             <?php endforeach; ?>
-            <input type="submit" class="btn btn-dark" value="Submit">
+            <input type="submit" class="btn btn-primary" value="Submit">
         </form>
     </div>
 </div>

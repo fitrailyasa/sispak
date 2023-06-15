@@ -5,6 +5,7 @@ Beranda
 
 <?= $this->section('content') ?>
 <div class="text-center">
+    <img src="<?= base_url('assets/logo/logo.png') ?>" width="150" alt="">
     <h1>Selamat Datang di Sistem Pakar <br> Diagnosa Kerusakan Laptop</h1>
     <h4>Solusi cepat mengetahui kerusakan laptop anda!</h4>
 </div>
@@ -28,6 +29,6 @@ Beranda
     </ol>
 </div>
 <div class="text-center mb-3">
-    <a class="btn btn-dark text" href="/diagnosis">Mulai</a>
+    <a class="btn btn-primary text" href="/diagnosis">Mulai</a>
 </div>
 <?= $this->endSection() ?>

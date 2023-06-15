@@ -30,9 +30,11 @@ Login
                     </script>
                     <?php endif; ?>
 
-                    <form class="card-body cardbody-color p-lg-5" method="post" action="/auth/login">
+                    <form class="card-body cardbody-color p-lg-4" method="post" action="/auth/login">
                         <?= csrf_field() ?>
-
+                        <div class="text-center mb-4">
+                            <img src="<?= base_url('assets/logo/logo.png') ?>" width="100" alt="">
+                        </div>
                         <div class="mb-3">
                             <input type="text" class="form-control" aria-describedby="emailHelp"
                                 placeholder="Username" id="username" name="username" required
