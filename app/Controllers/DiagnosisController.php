@@ -114,8 +114,7 @@ class DiagnosisController extends BaseController
             if ($solusi) {
                 $solusis[] = $solusi;
             }
-        }
-        
+        }        
         
         // Riwayat
         $validationRules = [
@@ -132,13 +131,17 @@ class DiagnosisController extends BaseController
                 ]
             ];
             
+            // Mengambil data kerusakan berdasarkan kode kerusakan
+            $kerusakan = $kerusakanModel->find($rule['kode_kerusakan']);
+            $namaKerusakan = $kerusakan['nama_kerusakan'];
+            
             if (!$this->validate($validationRules, $validationMessages)) {
                 return redirect()->back()->withInput()->with('validation', $this->validator);
             }
             
             $data = [
                 'token' => $rule['kode_kerusakan'] . date('YmdHis'),
-                'kode_kerusakan' => $rule['kode_kerusakan'],
+                'kode_kerusakan' => $kerusakan['nama_kerusakan'],
                 'merk_laptop' => $this->request->getPost('merk_laptop'),
                 'tipe_laptop' => $this->request->getPost('tipe_laptop'),
                 'created_at' => date('Y-m-d H:i:s')
@@ -149,8 +152,8 @@ class DiagnosisController extends BaseController
         
         $merk_laptop = $this->request->getPost('merk_laptop');
         $tipe_laptop = $this->request->getPost('tipe_laptop');
-        $kode_kerusakan = $rule['kode_kerusakan'];
 
-        return view('hasil', ['gejalas' => $gejalas, 'solusis' => $solusis, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop, 'kode_kerusakan' => $kode_kerusakan, 'maxValue' => $maxValue]);
+
+        return view('hasil', ['gejalas' => $gejalas, 'solusis' => $solusis, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop, 'namaKerusakan' => $namaKerusakan, 'maxValue' => $maxValue]);
     }
 }
