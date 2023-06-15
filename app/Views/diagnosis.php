@@ -34,7 +34,9 @@ Diagnosa
                     </select>
                 </div>
             <?php endforeach; ?>
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
         </form>
     </div>
 </div>
