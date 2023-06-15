@@ -116,37 +116,34 @@ class DiagnosisController extends BaseController
             }
         }
         
+        
         // Riwayat
         $validationRules = [
-            'kode_kerusakan' => 'required',
             'merk_laptop' => 'required',
             'tipe_laptop' => 'required'
         ];
         
         $validationMessages = [
-            'kode_kerusakan' => [
-                'required' => 'kode kerusakan harus diisi.',
-            ],
             'merk_laptop' => [
                 'required' => 'merk laptop harus diisi.',
             ],
             'tipe_laptop' => [
                 'required' => 'tipe laptop harus diisi.',
-            ]
-        ];
-                        
-        if (!$this->validate($validationRules, $validationMessages)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
-        }
-                                
-        $data = [
-            'token' => $this->request->getPost('kode_kerusakan') . date('YmdHis'),
-            'kode_kerusakan' => $this->request->getPost('kode_kerusakan'),
-            'merk_laptop' => $this->request->getPost('merk_laptop'),
-            'tipe_laptop' => $this->request->getPost('tipe_laptop'),
-            'created_at' => date('Y-m-d H:i:s')
-        ];
-
+                ]
+            ];
+            
+            if (!$this->validate($validationRules, $validationMessages)) {
+                return redirect()->back()->withInput()->with('validation', $this->validator);
+            }
+            
+            $data = [
+                'token' => $rule['kode_kerusakan'] . date('YmdHis'),
+                'kode_kerusakan' => $rule['kode_kerusakan'],
+                'merk_laptop' => $this->request->getPost('merk_laptop'),
+                'tipe_laptop' => $this->request->getPost('tipe_laptop'),
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+            
         $riwayatModel = new RiwayatModel();
         $riwayatModel->insert($data);
         
