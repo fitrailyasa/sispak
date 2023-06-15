@@ -149,7 +149,8 @@ class DiagnosisController extends BaseController
         
         $merk_laptop = $this->request->getPost('merk_laptop');
         $tipe_laptop = $this->request->getPost('tipe_laptop');
+        $kode_kerusakan = $rule['kode_kerusakan'];
 
-        return view('hasil', ['gejalas' => $gejalas, 'rules' => $rules, 'solusis' => $solusis, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop, 'maxValue' => $maxValue]);
+        return view('hasil', ['gejalas' => $gejalas, 'solusis' => $solusis, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop, 'kode_kerusakan' => $kode_kerusakan, 'maxValue' => $maxValue]);
     }
 }
