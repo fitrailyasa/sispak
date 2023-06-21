@@ -8,7 +8,7 @@ class KerusakanModel extends Model
 {
     protected $table = 'kerusakan';
     protected $primaryKey = 'kode_kerusakan';
-    protected $allowedFields = ['nama_kerusakan', 'created_at', 'updated_at'];
+    protected $allowedFields = ['kode_kerusakan', 'nama_kerusakan', 'created_at', 'updated_at'];
 
     public function solusi()
     {
@@ -24,5 +24,5 @@ class KerusakanModel extends Model
     {
         return $this->hasMany('App\Models\RuleModel', 'kode_kerusakan', 'kode_kerusakan');
     }
-    
+
 }

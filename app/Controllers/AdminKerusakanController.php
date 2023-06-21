@@ -45,9 +45,6 @@ class AdminKerusakanController extends BaseController
         'created_at' => date('Y-m-d H:i:s')
     ];
 
-    // var_dump($data);
-    // exit();
-
     $kerusakanModel = new KerusakanModel();
     $kerusakanModel->insert($data);
 

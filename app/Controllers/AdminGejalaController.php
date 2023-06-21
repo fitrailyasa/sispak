@@ -21,14 +21,13 @@ class AdminGejalaController extends BaseController
     public function store()
     {
         $validationRules = [
-            'kode_gejala' => 'required|is_unique[gejala.kode_gejala]',
+            'kode_gejala' => 'required',
             'nama_gejala' => 'required'
         ];
 
         $validationMessages = [
             'kode_gejala' => [
-                'required' => 'Kode gejala harus diisi.',
-                'is_unique' => 'Kode gejala sudah terdaftar.'
+                'required' => 'Kode gejala harus diisi.'
             ],
             'nama_gejala' => [
                 'required' => 'Nama gejala harus diisi.',
@@ -44,9 +43,6 @@ class AdminGejalaController extends BaseController
             'nama_gejala' => $this->request->getVar('nama_gejala'),
             'created_at' => date('Y-m-d H:i:s')
         ];
-
-        var_dump($data);
-        exit();
 
         $gejalaModel = new GejalaModel();
         $gejalaModel->insert($data);

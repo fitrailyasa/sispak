@@ -8,11 +8,11 @@ class GejalaModel extends Model
 {
     protected $table = 'gejala';
     protected $primaryKey = 'kode_gejala';
-    protected $allowedFields = ['nama_gejala', 'created_at', 'updated_at'];
+    protected $allowedFields = ['kode_gejala', 'nama_gejala', 'created_at', 'updated_at'];
 
     public function rule()
     {
         return $this->hasMany('App\Models\RuleModel', 'kode_gejala', 'kode_gejala');
     }
-    
+
 }
