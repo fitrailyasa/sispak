@@ -128,6 +128,10 @@
             </section>
             <!-- /.content -->
         </div>
+        <footer class="main-footer fixed-bottom text-center">
+            <strong>Copyright &copy; 2023 <a href="#">SDL</a>.</strong>
+            All rights reserved.
+        </footer>
     </div>
     <!-- ./wrapper -->
 

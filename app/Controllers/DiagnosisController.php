@@ -10,8 +10,6 @@ use App\Models\RiwayatModel;
 use App\Models\CFPenggunaModel;
 use App\Models\CFPakarModel;
 
-use CodeIgniter\Database\Query;
-
 class DiagnosisController extends BaseController
 {
     public function index()
@@ -31,7 +29,7 @@ class DiagnosisController extends BaseController
     {
         // Gejala
         $gejalaModel = new GejalaModel();
-        
+
         // CF Pengguna
         $cfPenggunaModel = new CFPenggunaModel();
 
@@ -60,52 +58,52 @@ class DiagnosisController extends BaseController
                 $gejalas[] = $gejala; // Menyimpan data gejala dalam array
             }
         }
-        
+
         // Proses Perhitungan Metode Naïve Bayes
         // 1) Menentukan nilai N, 𝑚, 𝑥, 𝑛𝑐 setiap class dan 𝑃(𝑣𝑗)
-        
-        $N = 1; 
+
+        $N = 1;
         $m = $gejalaModel->countAll(); // Total gejala
         $x = $kerusakanModel->countAll(); // Total kerusakan
         $nc = $cfPenggunas; // Total gejala yang dipilih
-        
+
         $probabilitas = 1/$x;
         $prob_bulat = round($probabilitas, 3);
-        
+
         // 2) Menghitung nilai 𝑃(𝑎𝑖|𝑣𝑗)
-        
-        $prob_jenis_kerusakan = []; // Inisialisasi variabel sebagai array kosong
-        
+
+        $prob_tiap_gejala = []; // Inisialisasi variabel sebagai array kosong
+
         $i = 0;
-        $satu = $i + 1;
-        
-        foreach ($cfPenggunas as $cf_pengguna) {
+
+        foreach ($nc as $cf_pengguna) {
             $kodeGejala = $cf_pengguna['kode_gejala'];
             $bobotPengguna = $cf_pengguna['bobot_pengguna'];
             $bobotPakar = $ruleModel->where('kode_gejala', $kodeGejala)->first()['bobot_pakar'];
-            
-            $prob_jenis_kerusakan[] = ($cf_pengguna['bobot_pengguna'] + $m * $probabilitas) / ($N + $m);
-            
+
+            $prob_tiap_gejala[] = ($cf_pengguna['bobot_pengguna'] + $m * $probabilitas) / ($N + $m);
+
             $cf_gejala[] = $bobotPengguna * $bobotPakar;
-            
+
             // 3) Menghitung 𝑃(𝑎𝑖|𝑣𝑗) 𝑥 𝑃(𝑣𝑗) untuk tiap 𝑣.
-            
+
+            $prob_jenis_kerusakan[] = $prob_tiap_gejala[$i] * $prob_bulat;
+
             $cf_combine = $cf_gejala[$i] + $cf_gejala[$i] * (1 - $cf_gejala[$i]);
             $persentase[] = $cf_combine * 100; // contoh 0.925 * 100 = 92.5%
             $i++;
         }
-        
-        $maxValue = max($persentase);
-        $maxValueIndex = array_keys($persentase, max($persentase)); // Indeks dengan persentase terbesar
-        $maxValueIndex = $maxValueIndex[0]; 
-        
+
+        $maxPersentase = max($persentase);
+        $maxValueIndex = $prob_jenis_kerusakan[0];
+
         $rules = [];
         if (isset($cfPenggunas[$maxValueIndex])) {
             $kodeGejala = $cfPenggunas[$maxValueIndex]['kode_gejala'];
             $rule = $ruleModel->where('kode_gejala', $kodeGejala)->findAll();
             $rules = array_merge($rules, $rule);
         }
-        
+
         // Solusi
         $solusiModel = new SolusiModel();
         $solusis = [];
@@ -114,14 +112,14 @@ class DiagnosisController extends BaseController
             if ($solusi) {
                 $solusis[] = $solusi;
             }
-        }        
-        
+        }
+
         // Riwayat
         $validationRules = [
             'merk_laptop' => 'required',
             'tipe_laptop' => 'required'
         ];
-        
+
         $validationMessages = [
             'merk_laptop' => [
                 'required' => 'merk laptop harus diisi.',
@@ -130,15 +128,15 @@ class DiagnosisController extends BaseController
                 'required' => 'tipe laptop harus diisi.',
                 ]
             ];
-            
+
             // Mengambil data kerusakan berdasarkan kode kerusakan
             $kerusakan = $kerusakanModel->find($rule['kode_kerusakan']);
             $namaKerusakan = $kerusakan['nama_kerusakan'];
-            
+
             if (!$this->validate($validationRules, $validationMessages)) {
                 return redirect()->back()->withInput()->with('validation', $this->validator);
             }
-            
+
             $data = [
                 'token' => $rule['kode_kerusakan'] . date('YmdHis'),
                 'kode_kerusakan' => $kerusakan['nama_kerusakan'],
@@ -146,14 +144,14 @@ class DiagnosisController extends BaseController
                 'tipe_laptop' => $this->request->getPost('tipe_laptop'),
                 'created_at' => date('Y-m-d H:i:s')
             ];
-            
+
         $riwayatModel = new RiwayatModel();
         $riwayatModel->insert($data);
-        
+
         $merk_laptop = $this->request->getPost('merk_laptop');
         $tipe_laptop = $this->request->getPost('tipe_laptop');
 
 
-        return view('hasil', ['gejalas' => $gejalas, 'solusis' => $solusis, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop, 'namaKerusakan' => $namaKerusakan, 'maxValue' => $maxValue]);
+        return view('hasil', ['gejalas' => $gejalas, 'solusis' => $solusis, 'merk_laptop' => $merk_laptop, 'tipe_laptop' => $tipe_laptop, 'namaKerusakan' => $namaKerusakan, 'maxValue' => $maxPersentase]);
     }
 }

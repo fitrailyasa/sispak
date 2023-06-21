@@ -40,10 +40,13 @@ class AdminGejalaController extends BaseController
         }
 
         $data = [
-            'kode_gejala' => $this->request->getPost('kode_gejala'),
-            'nama_gejala' => $this->request->getPost('nama_gejala'),
+            'kode_gejala' => $this->request->getVar('kode_gejala'),
+            'nama_gejala' => $this->request->getVar('nama_gejala'),
             'created_at' => date('Y-m-d H:i:s')
         ];
+
+        var_dump($data);
+        exit();
 
         $gejalaModel = new GejalaModel();
         $gejalaModel->insert($data);
