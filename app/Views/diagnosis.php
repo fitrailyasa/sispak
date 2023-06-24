@@ -17,9 +17,9 @@ Diagnosa
         <form action="<?= route_to('diagnosis/hasil') ?>" method="POST">
             <h4>Data Laptop</h4>
             <label for="merk_laptop">Merk Laptop :</label>
-            <input class="form-control" type="text" name="merk_laptop" value="<?= old('merk_laptop'); ?>" placeholder="merk laptop anda (wajib)"><br>
+            <input class="form-control" type="text" name="merk_laptop" value="<?= old('merk_laptop'); ?>" placeholder="merk laptop anda (wajib)" required><br>
             <label for="tipe_laptop">Tipe Laptop :</label>
-            <input class="form-control" type="text" name="tipe_laptop" value="<?= old('tipe_laptop'); ?>" placeholder="tipe laptop anda (wajib)"><br>
+            <input class="form-control" type="text" name="tipe_laptop" value="<?= old('tipe_laptop'); ?>" placeholder="tipe laptop anda (wajib)" required><br>
             <input type="hidden" name="kode_kerusakan" value="K1">
             <h5>Silahkan pilih gejala-gejala yang dirasakan oleh laptop beserta intensitasnya. Gejala lainnya dapat diabaikan apabila tidak dirasakan oleh laptop anda</h5>
             <?php $i = 1; foreach ($gejalas as $gejala) : ?>
