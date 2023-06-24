@@ -9,9 +9,9 @@ class UserSeeder extends Seeder
     public function run()
     {
         $data = [
-            'username' => 'Admin',
-            'email' => 'admin',
-            'password' => password_hash('admin', PASSWORD_DEFAULT),
+            'username' => 'admin@admin.com',
+            'email' => 'admin@admin.com',
+            'password' => password_hash('12345678', PASSWORD_DEFAULT),
             'image' => 'default.jpg',
             'role' => 1,
             'created_at' => date('Y-m-d H:i:s'),
