@@ -171,24 +171,24 @@ class RuleSeeder extends Seeder
                 'kode_kerusakan' => 'K07',
                 'bobot_pakar' => 0.4
             ],
-            // [
-            //     'kode_rule' => 'R8',
-            //     'kode_gejala' => 'G16',
-            //     'kode_kerusakan' => 'K08',
-            //     'bobot_pakar' => 0.9
-            // ],
-            // [
-            //     'kode_rule' => 'R8',
-            //     'kode_gejala' => 'G17',
-            //     'kode_kerusakan' => 'K08',
-            //     'bobot_pakar' => 0.6
-            // ],
-            // [
-            //     'kode_rule' => 'R8',
-            //     'kode_gejala' => 'G35',
-            //     'kode_kerusakan' => 'K08',
-            //     'bobot_pakar' => 0.9
-            // ],
+            [
+                'kode_rule' => 'R8',
+                'kode_gejala' => 'G16',
+                'kode_kerusakan' => 'K08',
+                'bobot_pakar' => 0.9
+            ],
+            [
+                'kode_rule' => 'R8',
+                'kode_gejala' => 'G17',
+                'kode_kerusakan' => 'K08',
+                'bobot_pakar' => 0.6
+            ],
+            [
+                'kode_rule' => 'R8',
+                'kode_gejala' => 'G35',
+                'kode_kerusakan' => 'K08',
+                'bobot_pakar' => 0.9
+            ],
             [
                 'kode_rule' => 'R9',
                 'kode_gejala' => 'G01',

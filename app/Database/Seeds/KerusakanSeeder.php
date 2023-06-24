@@ -17,7 +17,7 @@ class KerusakanSeeder extends Seeder
             ['kode_kerusakan' => 'K05', 'nama_kerusakan' => 'Sound Card', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
             ['kode_kerusakan' => 'K06', 'nama_kerusakan' => 'OS Bermasalah', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
             ['kode_kerusakan' => 'K07', 'nama_kerusakan' => 'Aplikasi Rusak', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
-            // ['kode_kerusakan' => 'K08', 'nama_kerusakan' => 'Power Supply', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
+            ['kode_kerusakan' => 'K08', 'nama_kerusakan' => 'Power Supply', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
             ['kode_kerusakan' => 'K09', 'nama_kerusakan' => 'Processor', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
             ['kode_kerusakan' => 'K10', 'nama_kerusakan' => 'Kekurangan Memori', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
             ['kode_kerusakan' => 'K11', 'nama_kerusakan' => 'Kekurangan Memori VGA', 'created_at' => '2021-12-12 12:12:12', 'updated_at' => '2021-12-12 12:12:12'],
