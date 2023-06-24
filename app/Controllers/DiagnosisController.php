@@ -98,12 +98,14 @@ class DiagnosisController extends BaseController
         if (array_sum($persentase) > 0) {
             $maxPersentase = max($persentase);
             $maxValueIndex = array_keys($prob_jenis_kerusakan, max($prob_jenis_kerusakan));
-            $maxValueIndex = $maxValueIndex[0];
         } else {
             $maxPersentase = 0;
-            $maxValueIndex = 0;
         }
+        $maxValueIndex = $maxValueIndex[0];
 
+
+
+        // Rule
         $rules = [];
         if (isset($cfPenggunas[$maxValueIndex])) {
             $kodeGejala = $cfPenggunas[$maxValueIndex]['kode_gejala'];
@@ -112,7 +114,7 @@ class DiagnosisController extends BaseController
         }
 
         // Kerusakan
-        $kerusakan = $kerusakanModel->find($maxValueIndex)['nama_kerusakan'];
+        $kerusakan = $kerusakanModel->find($rules[0]['kode_kerusakan'])['nama_kerusakan'];
 
         // Solusi
         $solusiModel = new SolusiModel();
@@ -141,9 +143,9 @@ class DiagnosisController extends BaseController
 
             // Mengambil data kerusakan berdasarkan kode kerusakan
             if(isset($rule['kode_kerusakan']) == null) {
-                return redirect()->back()->withInput()->with('error', 'Tidak ada kerusakan yang terdeteksi.');
+                return redirect()->back();
             } else {
-                $namaKerusakan = $kerusakanModel->find($maxValueIndex)['nama_kerusakan'];
+                $namaKerusakan = $kerusakan;
             }
 
             if (!$this->validate($validationRules, $validationMessages)) {
