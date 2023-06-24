@@ -95,7 +95,8 @@ class DiagnosisController extends BaseController
         }
 
         $maxPersentase = max($persentase);
-        $maxValueIndex = $prob_jenis_kerusakan[0];
+        $maxValueIndex = array_keys($prob_jenis_kerusakan, max($prob_jenis_kerusakan));
+        $maxValueIndex = $maxValueIndex[0];
 
         $rules = [];
         if (isset($cfPenggunas[$maxValueIndex])) {
