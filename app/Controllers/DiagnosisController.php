@@ -56,15 +56,6 @@ class DiagnosisController extends BaseController
                     'bobot_pengguna' => $bobotPengguna,
                 ];
                 $gejalas[] = $gejala; // Menyimpan data gejala dalam array
-            } else {
-                $gejala = $gejalaModel->find($kodeGejala); // Mengambil data gejala berdasarkan kode gejala
-
-                // Menambahkan data CF pengguna ke dalam array
-                $cfPenggunas[] = [
-                    'kode_gejala' => 0,
-                    'bobot_pengguna' => 0,
-                ];
-                $gejalas[] = $gejala; // Menyimpan data gejala dalam array
             }
         }
 
@@ -84,6 +75,7 @@ class DiagnosisController extends BaseController
         $prob_tiap_gejala = []; // Inisialisasi variabel sebagai array kosong
 
         $i = 0;
+        $persentase = [];
 
         foreach ($nc as $cf_pengguna) {
             $kodeGejala = $cf_pengguna['kode_gejala'];
@@ -103,9 +95,16 @@ class DiagnosisController extends BaseController
             $i++;
         }
 
-        $maxPersentase = max($persentase);
-        $maxValueIndex = array_keys($prob_jenis_kerusakan, max($prob_jenis_kerusakan));
-        $maxValueIndex = $maxValueIndex[0];
+        if (array_sum($persentase) > 0) {
+            $maxPersentase = max($persentase);
+            $maxValueIndex = array_keys($prob_jenis_kerusakan, max($prob_jenis_kerusakan));
+            $maxValueIndex = $maxValueIndex[0];
+        } else {
+            $maxPersentase = 0;
+            $maxValueIndex = 0;
+        }
+
+
 
         $rules = [];
         if (isset($cfPenggunas[$maxValueIndex])) {
@@ -140,8 +139,12 @@ class DiagnosisController extends BaseController
             ];
 
             // Mengambil data kerusakan berdasarkan kode kerusakan
-            $kerusakan = $kerusakanModel->find($rule['kode_kerusakan']);
-            $namaKerusakan = $kerusakan['nama_kerusakan'];
+            if(isset($rule['kode_kerusakan']) == null) {
+                return redirect()->back()->withInput()->with('error', 'Tidak ada kerusakan yang terdeteksi.');
+            } else {
+                $kerusakan = $kerusakanModel->find($rule['kode_kerusakan']);
+                $namaKerusakan = $kerusakan['nama_kerusakan'];
+            }
 
             if (!$this->validate($validationRules, $validationMessages)) {
                 return redirect()->back()->withInput()->with('validation', $this->validator);
