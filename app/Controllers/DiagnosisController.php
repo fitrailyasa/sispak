@@ -104,14 +104,15 @@ class DiagnosisController extends BaseController
             $maxValueIndex = 0;
         }
 
-
-
         $rules = [];
         if (isset($cfPenggunas[$maxValueIndex])) {
             $kodeGejala = $cfPenggunas[$maxValueIndex]['kode_gejala'];
             $rule = $ruleModel->where('kode_gejala', $kodeGejala)->findAll();
             $rules = array_merge($rules, $rule);
         }
+
+        // Kerusakan
+        $kerusakan = $kerusakanModel->find($maxValueIndex)['nama_kerusakan'];
 
         // Solusi
         $solusiModel = new SolusiModel();
@@ -142,8 +143,7 @@ class DiagnosisController extends BaseController
             if(isset($rule['kode_kerusakan']) == null) {
                 return redirect()->back()->withInput()->with('error', 'Tidak ada kerusakan yang terdeteksi.');
             } else {
-                $kerusakan = $kerusakanModel->find($rule['kode_kerusakan']);
-                $namaKerusakan = $kerusakan['nama_kerusakan'];
+                $namaKerusakan = $kerusakanModel->find($maxValueIndex)['nama_kerusakan'];
             }
 
             if (!$this->validate($validationRules, $validationMessages)) {
@@ -152,7 +152,7 @@ class DiagnosisController extends BaseController
 
             $data = [
                 'token' => $rule['kode_kerusakan'] . date('YmdHis'),
-                'kode_kerusakan' => $kerusakan['nama_kerusakan'],
+                'kode_kerusakan' => $namaKerusakan,
                 'merk_laptop' => $this->request->getPost('merk_laptop'),
                 'tipe_laptop' => $this->request->getPost('tipe_laptop'),
                 'created_at' => date('Y-m-d H:i:s')
