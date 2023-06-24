@@ -56,6 +56,15 @@ class DiagnosisController extends BaseController
                     'bobot_pengguna' => $bobotPengguna,
                 ];
                 $gejalas[] = $gejala; // Menyimpan data gejala dalam array
+            } else {
+                $gejala = $gejalaModel->find($kodeGejala); // Mengambil data gejala berdasarkan kode gejala
+
+                // Menambahkan data CF pengguna ke dalam array
+                $cfPenggunas[] = [
+                    'kode_gejala' => 0,
+                    'bobot_pengguna' => 0,
+                ];
+                $gejalas[] = $gejala; // Menyimpan data gejala dalam array
             }
         }
 
